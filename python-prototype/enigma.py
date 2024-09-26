@@ -22,7 +22,7 @@ class Rotor:
         How offset the the alphabet ring is from the rotor wiring. 0 means that
         the "A" on the alphabet ring is aligned with rotor input "A", 1 means
         "A" is aligned with "B" etc.
-    turn_position : int
+    turn_positions : int
         The position at which, if the rotor advances, its notch will be
         positioned such that its left neighbour also advances.
 
@@ -32,7 +32,7 @@ class Rotor:
         Returns the output obtained from an input signal at the given index.
     '''
 
-    def __init__(self, wiring, turn_position, position=0, ring_offset=0):
+    def __init__(self, wiring, turn_positions, position=0, ring_offset=0):
         '''
         Constructor for the Rotor class.
 
@@ -40,8 +40,9 @@ class Rotor:
         ----------
         wiring : int list
             The wiring configuration of the rotor.
-        turn_position : int
-            The position at which a rotor will step its neighbour if it steps.
+        turn_positions : int list
+            The position(s) at which a rotor will step its neighbour if it
+            steps.
         position : int (optional)
             Offset of the rotor from starting position (default is 0).
         ring_offset : int (optional)
@@ -50,7 +51,7 @@ class Rotor:
         self.wiring = wiring
         self.position = position
         self.ring_offset = ring_offset
-        self.turn_position = turn_position
+        self.turn_positions = turn_positions
 
     def get_output(self, input_index):
         '''
@@ -85,13 +86,15 @@ class Rotor:
         turn_adjacent : bool
             Whether or not this step should also advance the rotor's neighbour.
         '''
-        # Increment the rotor's position
-        self.position += 1
         # Calculate whether the rotor notch is in the correct position
         # To advance its neighbour
-        if (self.position - 1) - self.ring_offset == self.turn_position:
-            return True
-        return False
+        turn_adjacent = False
+        if (self.position - self.ring_offset) in self.turn_positions:
+            turn_adjacent = True
+        # Increment the rotor's position
+        self.position = (self.position + 1) % 26
+        # Return whether or not the rotor should step its neighbour
+        return turn_adjacent
 
 # Wiring configurations for rotors I-VIII
 ROTOR_WIRINGS = [
@@ -104,3 +107,9 @@ ROTOR_WIRINGS = [
 [13, 25,  9,  7,  6, 17,  2, 23, 12, 24, 18, 22,  1, 14, 20,  5,  0,  8, 21, 11, 15,  4, 10, 16,  3, 19],
 [ 5, 10, 16,  7, 19, 11, 23, 14,  2,  1,  9, 18, 15,  3, 25, 17,  0, 12,  4, 22, 13,  8, 20, 24,  6, 21]
 ]
+
+rotorI = Rotor(ROTOR_WIRINGS[0], [16])
+rotorII = Rotor(ROTOR_WIRINGS[1], [4])
+rotorIII = Rotor(ROTOR_WIRINGS[2], [21])
+rotorIV = Rotor(ROTOR_WIRINGS[3], [9])
+rotorV = Rotor(ROTOR_WIRINGS[4], [25])
