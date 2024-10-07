@@ -95,15 +95,14 @@ class Rotor:
         turn_adjacent : bool
             Whether or not this step should also advance the rotor's neighbour.
         '''
-        # Calculate whether the rotor notch is in the correct position
-        # To advance its neighbour
-        turn_adjacent = False
-        if (self.position - self.ring_offset) in self.turn_positions:
-            turn_adjacent = True
         # Increment the rotor's position
         self.position = (self.position + 1) % 26
+        # Calculate whether the rotor notch is in the correct position
+        # To advance its neighbour
+        if (self.position - self.ring_offset) in self.turn_positions:
+            return True
         # Return whether or not the rotor should step its neighbour
-        return turn_adjacent
+        return False
 
 class EnigmaM3:
     def __init__(self, lRotor, mRotor, rRotor, reflector, entry_wheel):
@@ -112,18 +111,23 @@ class EnigmaM3:
         self.rRotor = rRotor
         self.reflector = reflector
         self.entry_wheel = entry_wheel
+        self.rotors_to_advance = [False, False, True]
 
     def encrypt(self, input_letter, verbose=False):
+
+        if verbose: print("----------------")
 
         input_letter = input_letter.upper()
         if verbose: print("Keyboard input:",input_letter)
 
-        mRotorAdvance = self.rRotor.advance()
-        if mRotorAdvance:
-            lRotorAdvance = self.mRotor.advance()
-            if lRotorAdvance:
-                self.mRotor.advance()
-                self.lRotor.advance()
+        if self.rotors_to_advance[0]:
+            self.rotors_to_advance[0] = False
+            self.lRotor.advance()
+            self.mRotor.advance()
+        if self.rotors_to_advance[1]:
+            self.rotors_to_advance[1] = False
+            self.rotors_to_advance[0] = self.mRotor.advance()
+        self.rotors_to_advance[1] = self.rRotor.advance()
 
         if verbose: print("Rotor position: {0}{1}{2}".format(list(string.ascii_uppercase)[lRotor.position], list(string.ascii_uppercase)[mRotor.position], list(string.ascii_uppercase)[rRotor.position]))
 
@@ -145,6 +149,8 @@ class EnigmaM3:
         r_back = self.rRotor.get_output(m_back, False)
         if verbose: print("Right wheel encryption:",list(string.ascii_uppercase)[r_back])
         e_back = self.entry_wheel.index(r_back)
+
+        if verbose: print("----------------")
 
         return list(string.ascii_uppercase)[e_back]
 
@@ -202,8 +208,14 @@ if __name__ == '__main__':
 
     input_text = input("in > ").upper()
     print("out > ", end="")
+    count = 0
     for c in input_text:
         print(enigma.encrypt(str(c)),end="")
+        #enigma.encrypt(str(c), verbose=True)
+        count += 1
+        if count % 5 == 0:
+            count = 0
+            print(" ", end="")
 
     '''
     while True:
