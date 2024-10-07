@@ -79,7 +79,7 @@ class Rotor:
             output_index = self.wiring[idx]
         else:
             output_index = self.wiring.index(idx)
-        output_index -= self.position
+        output_index = (output_index - self.position) % 26
         return output_index
 
     def advance(self):
@@ -200,6 +200,13 @@ if __name__ == '__main__':
 
     enigma = EnigmaM3(lRotor, mRotor, rRotor, reflector, sample_entry_wheel)
 
+    input_text = input("in > ").upper()
+    print("out > ", end="")
+    for c in input_text:
+        print(enigma.encrypt(str(c)),end="")
+
+    '''
     while True:
         user_input = input("in > ").upper()
-        print("out > {0}".format(enigma.encrypt(user_input, verbose=True)))
+        print("out > {0}".format(enigma.encrypt(user_input, verbose=False)))
+    '''
