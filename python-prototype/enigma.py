@@ -115,8 +115,6 @@ class EnigmaM3:
 
     def encrypt(self, input_letter, verbose=False):
 
-        if verbose: print("----------------")
-
         input_letter = input_letter.upper()
         if verbose: print("Keyboard input:",input_letter)
 
@@ -132,6 +130,7 @@ class EnigmaM3:
         if verbose: print("Rotor position: {0}{1}{2}".format(list(string.ascii_uppercase)[lRotor.position], list(string.ascii_uppercase)[mRotor.position], list(string.ascii_uppercase)[rRotor.position]))
 
         input_index = list(string.ascii_uppercase).index(input_letter)
+        input_index = plugboard[input_index]
 
         e_out = self.entry_wheel[input_index]
         r_out = self.rRotor.get_output(e_out, True)
@@ -150,9 +149,11 @@ class EnigmaM3:
         if verbose: print("Right wheel encryption:",list(string.ascii_uppercase)[r_back])
         e_back = self.entry_wheel.index(r_back)
 
+        output_index = plugboard[e_back]
+
         if verbose: print("----------------")
 
-        return list(string.ascii_uppercase)[e_back]
+        return list(string.ascii_uppercase)[output_index]
 
 # Wiring configurations for rotors I-VIII
 ROTOR_WIRINGS = [
@@ -203,6 +204,15 @@ if __name__ == '__main__':
 
     reflector_choice = input("Please select a reflector (B or C): ").upper()
     reflector = reflectorB if reflector_choice == "B" else reflectorC
+
+    plugboard = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
+
+    plugboard_input = input("Please enter plugboard swaps as pairs separated by a space e.g. AB FX HJ: ").upper().split(" ")
+    for pair in plugboard_input:
+        index1 = list(string.ascii_uppercase).index(pair[0])
+        index2 = list(string.ascii_uppercase).index(pair[1])
+        plugboard[index1] = index2
+        plugboard[index2] = index1
 
     enigma = EnigmaM3(lRotor, mRotor, rRotor, reflector, sample_entry_wheel)
 
