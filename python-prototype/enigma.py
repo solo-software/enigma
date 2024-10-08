@@ -3,7 +3,7 @@ A Python prototype for simulating the Enigma machine.
 
 Author: Zak Mitchell
 
-Last Modified: 07/10/24
+Last Modified: 08/10/24
 '''
 
 import string
@@ -105,7 +105,47 @@ class Rotor:
         return False
 
 class EnigmaM3:
+    '''
+    Class representing the M3 model of the Enigma.
+
+    Attributes
+    ----------
+    lRotor : Rotor
+        A Rotor object representing the leftmost rotor.
+    mRotor : Rotor
+        A Rotor object representing the central rotor.
+    rRotor : Rotor
+        A Rotor object representing the rightmost rotor.
+    reflector : int list
+        Each item in the list contains the output index that should be produced
+        by sending a signal to that input index, representing the behaviour of
+        the reflector.
+    entry_wheel : int list
+        As above, but representing the behaviour of the entry wheel.
+    rotors_to_advance : bool list
+        A list indicating whether or not rotors need to be stepped on the next
+        character encryption.
+    '''
+
     def __init__(self, lRotor, mRotor, rRotor, reflector, entry_wheel):
+        '''
+        Contructor for the Enigma class.
+
+        Parameters
+        ----------
+        lRotor : Rotor
+            A Rotor object representing the leftmost rotor.
+        mRotor : Rotor
+            A Rotor object representing the central rotor.
+        rRotor : Rotor
+            A Rotor object representing the rightmost rotor.
+        reflector : int list
+            Each item in the list contains the output index that should be produced
+            by sending a signal to that input index, representing the behaviour of
+            the reflector.
+        entry_wheel : int list
+            As above, but representing the behaviour of the entry wheel.
+        '''
         self.lRotor = lRotor
         self.mRotor = mRotor
         self.rRotor = rRotor
@@ -114,13 +154,18 @@ class EnigmaM3:
         self.rotors_to_advance = [False, False, True]
 
     def encrypt(self, input_letter, verbose=False):
-
+        '''
+        
+        '''
+        # Ensure that the input is converted to uppercase, for simplicity
         input_letter = input_letter.upper()
         if verbose: print("Keyboard input:",input_letter)
 
+        # Advance the leftmost rotor if it has to be advanced
         if self.rotors_to_advance[0]:
             self.rotors_to_advance[0] = False
             self.lRotor.advance()
+            # Implement double stepping by also stepping the middle rotor
             self.mRotor.advance()
         if self.rotors_to_advance[1]:
             self.rotors_to_advance[1] = False
@@ -177,8 +222,8 @@ rotorVI   = Rotor(ROTOR_WIRINGS[5], [25, 12])
 rotorVII  = Rotor(ROTOR_WIRINGS[6], [25, 12])
 rotorVIII = Rotor(ROTOR_WIRINGS[7], [25, 12])
 
-entry_wheel = [10, 23, 21, 12, 2, 13, 14, 15, 7, 16, 17, 18, 25, 24, 8, 9, 0, 3, 11, 4, 6, 22, 1, 20, 5, 19]
-sample_entry_wheel = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
+qwerty_entry_wheel = [10, 23, 21, 12, 2, 13, 14, 15, 7, 16, 17, 18, 25, 24, 8, 9, 0, 3, 11, 4, 6, 22, 1, 20, 5, 19]
+entry_wheel = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
 reflectorB = [24, 17, 20, 7, 16, 18, 11, 3, 15, 23, 13, 6, 14, 10, 12, 8, 4, 1, 5, 25, 2, 22, 21, 9, 0, 19]
 reflectorC = [5, 21, 15, 9, 8, 0, 14, 24, 4, 3, 17, 25, 23, 22, 6, 2, 19, 10, 20, 16, 18, 1, 13, 12, 7, 11]
 
