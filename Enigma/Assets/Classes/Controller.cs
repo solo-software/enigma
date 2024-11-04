@@ -23,6 +23,9 @@ public class Controller : MonoBehaviour
     [SerializeField] private EntryWheel entry_wheel = EntryWheel.STANDARD;
     [SerializeField] private Reflector reflector = Reflector.B;
 
+    [SerializeField] private GameObject ROTOR_MODEL;
+    [SerializeField] private List<GameObject> ALPHABET_TYRES;
+
     private static int[][] ROTORS = 
     {
         new int[] {4, 10, 12, 5, 11, 6, 3, 16, 21, 25, 13, 19, 14, 22, 24, 7, 23, 20, 18, 15, 0, 8, 1, 17, 2, 9},
@@ -86,10 +89,34 @@ public class Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameObject rRotorObject = GameObject.Instantiate(ROTOR_MODEL, new Vector3(0, 0, 0f), Quaternion.Euler(90, 0, 180));
+        GameObject mRotorObject = GameObject.Instantiate(ROTOR_MODEL, new Vector3(0, 0, 0.02f), Quaternion.Euler(90, 0, 180));
+        GameObject lRotorObject = GameObject.Instantiate(ROTOR_MODEL, new Vector3(0, 0, 0.04f), Quaternion.Euler(90, 0, 180));
+
+        GameObject rRotorAlphabetRing = GameObject.Instantiate(ALPHABET_TYRES[(int)rRotor_number], new Vector3(0, 0, 0.005f), Quaternion.Euler(90, 0, 180), rRotorObject.GetComponent<Transform>());
+        GameObject mRotorAlphabetRing = GameObject.Instantiate(ALPHABET_TYRES[(int)mRotor_number], new Vector3(0, 0, 0.025f), Quaternion.Euler(90, 0, 180), mRotorObject.GetComponent<Transform>());
+        GameObject lRotorAlphabetRing = GameObject.Instantiate(ALPHABET_TYRES[(int)lRotor_number], new Vector3(0, 0, 0.045f), Quaternion.Euler(90, 0, 180), lRotorObject.GetComponent<Transform>());
+
+        rRotorAlphabetRing.GetComponent<Transform>().Rotate(new Vector3(0, 180 - (360 / 26) * rRotor_ring_offset, 0));
+        mRotorAlphabetRing.GetComponent<Transform>().Rotate(new Vector3(0, 180 - (360 / 26) * mRotor_ring_offset, 0));
+        lRotorAlphabetRing.GetComponent<Transform>().Rotate(new Vector3(0, 180 - (360 / 26) * lRotor_ring_offset, 0));
+
+        rRotorObject.GetComponent<Transform>().Rotate(new Vector3(0, (360 / 26) * rRotor_ring_offset, 0));
+        mRotorObject.GetComponent<Transform>().Rotate(new Vector3(0, (360 / 26) * mRotor_ring_offset, 0));
+        lRotorObject.GetComponent<Transform>().Rotate(new Vector3(0, (360 / 26) * lRotor_ring_offset, 0));
+
+        rRotorObject.GetComponent<Transform>().Rotate(new Vector3(0, -(360 / 26) * rRotor_position, 0));
+        mRotorObject.GetComponent<Transform>().Rotate(new Vector3(0, -(360 / 26) * mRotor_position, 0));
+        lRotorObject.GetComponent<Transform>().Rotate(new Vector3(0, -(360 / 26) * lRotor_position, 0));
+
+        rRotor_position -= rRotor_ring_offset;
+        mRotor_position -= mRotor_ring_offset;
+        lRotor_position -= lRotor_ring_offset;
+
         Rotor lRotor = new Rotor(wiring: ROTORS[(int)lRotor_number], turn_positions: TURNOVER_POSITIONS[(int)lRotor_number], position: lRotor_position, ring_offset: lRotor_ring_offset);
         Rotor mRotor = new Rotor(wiring: ROTORS[(int)mRotor_number], turn_positions: TURNOVER_POSITIONS[(int)mRotor_number], position: mRotor_position, ring_offset: mRotor_ring_offset);
         Rotor rRotor = new Rotor(wiring: ROTORS[(int)rRotor_number], turn_positions: TURNOVER_POSITIONS[(int)rRotor_number], position: rRotor_position, ring_offset: rRotor_ring_offset);
-        enigma = new EnigmaM3(lRotor, mRotor, rRotor, REFLECTORS[(int) reflector], ENTRY_WHEELS[(int) entry_wheel], ENTRY_WHEELS[0]);
+        enigma = new EnigmaM3(lRotor, mRotor, rRotor, REFLECTORS[(int)reflector], ENTRY_WHEELS[(int)entry_wheel], ENTRY_WHEELS[0], lRotorObject, mRotorObject, rRotorObject);
     }
 
     // Update is called once per frame
