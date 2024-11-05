@@ -3,17 +3,7 @@ guid: 3f9d545b3ae939846922502b7daa208b
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Rotor Metal
-    second: {fileID: -4097995035768002312, guid: 90b15b82314028045bf8c84b8c1ec412, type: 3}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Rotor Metal.002
-    second: {fileID: -4097995035768002312, guid: 90b15b82314028045bf8c84b8c1ec412, type: 3}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

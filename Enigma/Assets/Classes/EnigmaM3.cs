@@ -10,57 +10,45 @@ public class EnigmaM3
     private Rotor mRotor;
     private Rotor rRotor;
     private int[] reflector;
-    private int[] entry_wheel;
+    private int[] entryWheel;
     private int[] plugboard;
-    private bool[] rotors_to_advance;
-    private GameObject lRotorObject;
-    private GameObject mRotorObject;
-    private GameObject rRotorObject;
+    private bool[] rotorsToAdvance;
 
     private static char[] CHARS = new char[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
 
-    private static Vector3 ROTOR_STEP = new Vector3(0, -360 / 26, 0);
-
-    public EnigmaM3(Rotor lRotor, Rotor mRotor, Rotor rRotor, int[] reflector, int[] entry_wheel, int[] plugboard, GameObject lRotorObject, GameObject mRotorObject, GameObject rRotorObject)
+    public EnigmaM3(Rotor lRotor, Rotor mRotor, Rotor rRotor, int[] reflector, int[] entryWheel, int[] plugboard)
     {
         this.lRotor = lRotor;
         this.mRotor = mRotor;
         this.rRotor = rRotor;
         this.reflector = reflector;
-        this.entry_wheel = entry_wheel;
+        this.entryWheel = entryWheel;
         this.plugboard = plugboard;
-        this.lRotorObject = lRotorObject;
-        this.mRotorObject = mRotorObject;
-        this.rRotorObject = rRotorObject;
 
-        rotors_to_advance = new bool[] { false, false, true };
+        rotorsToAdvance = new bool[] { false, false, true };
     }
 
-    public char Encrypt(char input_letter)
+    public char Encrypt(char inputLetter)
     {
-        input_letter = Char.ToUpper(input_letter);
+        inputLetter = Char.ToUpper(inputLetter);
 
-        if (rotors_to_advance[0])
+        if (rotorsToAdvance[0])
         {
-            rotors_to_advance[0] = false;
+            rotorsToAdvance[0] = false;
             lRotor.Advance();
-            lRotorObject.GetComponent<Transform>().Rotate(ROTOR_STEP);
             mRotor.Advance();
-            mRotorObject.GetComponent<Transform>().Rotate(ROTOR_STEP);
         }
-        if (rotors_to_advance[1])
+        if (rotorsToAdvance[1])
         {
-            rotors_to_advance[1] = false;
-            rotors_to_advance[0] = mRotor.Advance();
-            mRotorObject.GetComponent<Transform>().Rotate(ROTOR_STEP);
+            rotorsToAdvance[1] = false;
+            rotorsToAdvance[0] = mRotor.Advance();
         }
-        rotors_to_advance[1] = rRotor.Advance();
-        rRotorObject.GetComponent<Transform>().Rotate(ROTOR_STEP);
+        rotorsToAdvance[1] = rRotor.Advance();
 
-        int active_index = Array.IndexOf(CHARS, input_letter);
+        int active_index = Array.IndexOf(CHARS, inputLetter);
 
         active_index = plugboard[active_index];
-        active_index = entry_wheel[active_index];
+        active_index = entryWheel[active_index];
 
         active_index = rRotor.GetOutput(active_index, true);
         active_index = mRotor.GetOutput(active_index, true);
@@ -72,7 +60,7 @@ public class EnigmaM3
         active_index = mRotor.GetOutput(active_index, false);
         active_index = rRotor.GetOutput(active_index, false);
 
-        active_index = entry_wheel[active_index];
+        active_index = entryWheel[active_index];
         active_index = plugboard[active_index];
 
         return CHARS[active_index];

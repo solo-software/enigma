@@ -1,30 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Controller : MonoBehaviour
 {
     private EnigmaM3 enigma;
-    private static char[] chars = new char[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+    private GameObject lastLamp = null;
+    private static char[] CHARS = new char[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+    private static char[] QWERTY = new char[] { 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Z', 'X', 'C', 'V', 'B', 'N', 'M' };
 
-    [SerializeField] private RotorNumber lRotor_number = RotorNumber.I;
-    [SerializeField] private RotorNumber mRotor_number = RotorNumber.II;
-    [SerializeField] private RotorNumber rRotor_number = RotorNumber.III;
+    [SerializeField] private RotorNumber lRotorNumber = RotorNumber.I;
+    [SerializeField] private RotorNumber mRotorNumber = RotorNumber.II;
+    [SerializeField] private RotorNumber rRotorNumber = RotorNumber.III;
 
-    [SerializeField] private int lRotor_position = 0;
-    [SerializeField] private int mRotor_position = 0;
-    [SerializeField] private int rRotor_position = 0;
+    [SerializeField] private int lRotorPosition = 0;
+    [SerializeField] private int mRotorPosition = 0;
+    [SerializeField] private int rRotorPosition = 0;
 
-    [SerializeField] private int lRotor_ring_offset = 0;
-    [SerializeField] private int mRotor_ring_offset = 0;
-    [SerializeField] private int rRotor_ring_offset = 0;
+    [SerializeField] private Character lRotorRingSetting = 0;
+    [SerializeField] private Character mRotorRingSetting = 0;
+    [SerializeField] private Character rRotorRingSetting = 0;
 
-    [SerializeField] private EntryWheel entry_wheel = EntryWheel.STANDARD;
+    [SerializeField] private EntryWheel entryWheel = EntryWheel.STANDARD;
     [SerializeField] private Reflector reflector = Reflector.B;
 
     [SerializeField] private GameObject ROTOR_MODEL;
     [SerializeField] private List<GameObject> ALPHABET_TYRES;
+    [SerializeField] private GameObject LAMP_MODEL;
+    [SerializeField] private GameObject LAMP_LABEL;
+
+    [SerializeField] private Material LAMP_UNLIT;
+    [SerializeField] private Material LAMP_LIT;
 
     private static int[][] ROTORS = 
     {
@@ -86,37 +95,94 @@ public class Controller : MonoBehaviour
         QWERTY
     };
 
+    private enum Character
+    {
+        A,
+        B,
+        C,
+        D,
+        E,
+        F,
+        G,
+        H,
+        I,
+        J,
+        K,
+        L,
+        M,
+        N,
+        O,
+        P,
+        Q,
+        R,
+        S,
+        T,
+        U,
+        V,
+        W,
+        X,
+        Y,
+        Z
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        for (int i = 0; i < 26; i++)
+        {
+            float xCoord = -0.065f;
+            float yCoord = 0.04f;
+            float zCoord = 0.1f - (0.025f * (i % 9));
+            if (i > 8)
+            {
+                xCoord -= 0.02f;
+                zCoord -= 0.0125f;
+            }
+            if (i > 16)
+            {
+                xCoord -= 0.02f;
+                zCoord = 0.1f - (0.025f * ((i + 1) % 9));
+            }
+
+            GameObject thisLamp = GameObject.Instantiate(LAMP_MODEL, new Vector3(xCoord, yCoord, zCoord), Quaternion.Euler(-90, 0, 180));
+            thisLamp.name = "Lamp" + QWERTY[i].ToString();
+
+            GameObject lampLabelCanvas = GameObject.Instantiate(LAMP_LABEL, thisLamp.GetComponent<Transform>());
+            lampLabelCanvas.GetComponentInChildren<TextMeshProUGUI>().text = QWERTY[i].ToString();
+        }
+
         GameObject rRotorObject = GameObject.Instantiate(ROTOR_MODEL, new Vector3(0, 0, 0f), Quaternion.Euler(90, 0, 180));
         GameObject mRotorObject = GameObject.Instantiate(ROTOR_MODEL, new Vector3(0, 0, 0.02f), Quaternion.Euler(90, 0, 180));
         GameObject lRotorObject = GameObject.Instantiate(ROTOR_MODEL, new Vector3(0, 0, 0.04f), Quaternion.Euler(90, 0, 180));
 
-        GameObject rRotorAlphabetRing = GameObject.Instantiate(ALPHABET_TYRES[(int)rRotor_number], new Vector3(0, 0, 0.005f), Quaternion.Euler(90, 0, 180), rRotorObject.GetComponent<Transform>());
-        GameObject mRotorAlphabetRing = GameObject.Instantiate(ALPHABET_TYRES[(int)mRotor_number], new Vector3(0, 0, 0.025f), Quaternion.Euler(90, 0, 180), mRotorObject.GetComponent<Transform>());
-        GameObject lRotorAlphabetRing = GameObject.Instantiate(ALPHABET_TYRES[(int)lRotor_number], new Vector3(0, 0, 0.045f), Quaternion.Euler(90, 0, 180), lRotorObject.GetComponent<Transform>());
+        Transform rRotorTransform = rRotorObject.GetComponent<Transform>();
+        Transform mRotorTransform = mRotorObject.GetComponent<Transform>();
+        Transform lRotorTransform = lRotorObject.GetComponent<Transform>();
 
-        rRotorAlphabetRing.GetComponent<Transform>().Rotate(new Vector3(0, 180 - (360 / 26) * rRotor_ring_offset, 0));
-        mRotorAlphabetRing.GetComponent<Transform>().Rotate(new Vector3(0, 180 - (360 / 26) * mRotor_ring_offset, 0));
-        lRotorAlphabetRing.GetComponent<Transform>().Rotate(new Vector3(0, 180 - (360 / 26) * lRotor_ring_offset, 0));
+        GameObject rRotorAlphabetRing = GameObject.Instantiate(ALPHABET_TYRES[(int)rRotorNumber], new Vector3(0, 0, 0.005f), Quaternion.Euler(90, 0, 180), rRotorObject.GetComponent<Transform>());
+        GameObject mRotorAlphabetRing = GameObject.Instantiate(ALPHABET_TYRES[(int)mRotorNumber], new Vector3(0, 0, 0.025f), Quaternion.Euler(90, 0, 180), mRotorObject.GetComponent<Transform>());
+        GameObject lRotorAlphabetRing = GameObject.Instantiate(ALPHABET_TYRES[(int)lRotorNumber], new Vector3(0, 0, 0.045f), Quaternion.Euler(90, 0, 180), lRotorObject.GetComponent<Transform>());
 
-        rRotorObject.GetComponent<Transform>().Rotate(new Vector3(0, (360 / 26) * rRotor_ring_offset, 0));
-        mRotorObject.GetComponent<Transform>().Rotate(new Vector3(0, (360 / 26) * mRotor_ring_offset, 0));
-        lRotorObject.GetComponent<Transform>().Rotate(new Vector3(0, (360 / 26) * lRotor_ring_offset, 0));
+        rRotorAlphabetRing.GetComponent<Transform>().Rotate(new Vector3(0, 180 - (360 / 26) * (int)rRotorRingSetting, 0));
+        mRotorAlphabetRing.GetComponent<Transform>().Rotate(new Vector3(0, 180 - (360 / 26) * (int)mRotorRingSetting, 0));
+        lRotorAlphabetRing.GetComponent<Transform>().Rotate(new Vector3(0, 180 - (360 / 26) * (int)lRotorRingSetting, 0));
 
-        rRotorObject.GetComponent<Transform>().Rotate(new Vector3(0, -(360 / 26) * rRotor_position, 0));
-        mRotorObject.GetComponent<Transform>().Rotate(new Vector3(0, -(360 / 26) * mRotor_position, 0));
-        lRotorObject.GetComponent<Transform>().Rotate(new Vector3(0, -(360 / 26) * lRotor_position, 0));
+        rRotorTransform.Rotate(new Vector3(0, (360 / 26) * (int)rRotorRingSetting, 0));
+        mRotorTransform.Rotate(new Vector3(0, (360 / 26) * (int)mRotorRingSetting, 0));
+        lRotorTransform.Rotate(new Vector3(0, (360 / 26) * (int)lRotorRingSetting, 0));
 
-        rRotor_position -= rRotor_ring_offset;
-        mRotor_position -= mRotor_ring_offset;
-        lRotor_position -= lRotor_ring_offset;
+        rRotorTransform.Rotate(new Vector3(0, -(360 / 26) * rRotorPosition, 0));
+        mRotorTransform.Rotate(new Vector3(0, -(360 / 26) * mRotorPosition, 0));
+        lRotorTransform.Rotate(new Vector3(0, -(360 / 26) * lRotorPosition, 0));
 
-        Rotor lRotor = new Rotor(wiring: ROTORS[(int)lRotor_number], turn_positions: TURNOVER_POSITIONS[(int)lRotor_number], position: lRotor_position, ring_offset: lRotor_ring_offset);
-        Rotor mRotor = new Rotor(wiring: ROTORS[(int)mRotor_number], turn_positions: TURNOVER_POSITIONS[(int)mRotor_number], position: mRotor_position, ring_offset: mRotor_ring_offset);
-        Rotor rRotor = new Rotor(wiring: ROTORS[(int)rRotor_number], turn_positions: TURNOVER_POSITIONS[(int)rRotor_number], position: rRotor_position, ring_offset: rRotor_ring_offset);
-        enigma = new EnigmaM3(lRotor, mRotor, rRotor, REFLECTORS[(int)reflector], ENTRY_WHEELS[(int)entry_wheel], ENTRY_WHEELS[0], lRotorObject, mRotorObject, rRotorObject);
+        rRotorPosition -= (int)rRotorRingSetting;
+        mRotorPosition -= (int)mRotorRingSetting;
+        lRotorPosition -= (int)lRotorRingSetting;
+
+        Rotor lRotor = new Rotor(wiring: ROTORS[(int)lRotorNumber], turn_positions: TURNOVER_POSITIONS[(int)lRotorNumber], rotorTransform: lRotorTransform, position: lRotorPosition, ring_offset: (int)lRotorRingSetting);
+        Rotor mRotor = new Rotor(wiring: ROTORS[(int)mRotorNumber], turn_positions: TURNOVER_POSITIONS[(int)mRotorNumber], rotorTransform: mRotorTransform, position: mRotorPosition, ring_offset: (int)mRotorRingSetting);
+        Rotor rRotor = new Rotor(wiring: ROTORS[(int)rRotorNumber], turn_positions: TURNOVER_POSITIONS[(int)rRotorNumber], rotorTransform: rRotorTransform, position: rRotorPosition, ring_offset: (int)rRotorRingSetting);
+        enigma = new EnigmaM3(lRotor, mRotor, rRotor, REFLECTORS[(int)reflector], ENTRY_WHEELS[(int)entryWheel], ENTRY_WHEELS[0]);
     }
 
     // Update is called once per frame
@@ -136,6 +202,17 @@ public class Controller : MonoBehaviour
                 Debug.Log("Encrypting: " + entered_char.ToString());
                 char output_char = enigma.Encrypt(entered_char);
                 Debug.Log("Encrypted character: " +  output_char.ToString());
+                int outputIndex = CHARS.ToList().IndexOf(output_char);
+                if (lastLamp != null)
+                {
+                    Material[] lastTempMats = lastLamp.GetComponent<Renderer>().materials;
+                    lastTempMats[0] = LAMP_UNLIT;
+                    lastLamp.GetComponent<Renderer>().materials = lastTempMats;
+                }
+                lastLamp = GameObject.Find("Lamp" + output_char.ToString());
+                Material[] tempMats = lastLamp.GetComponent<Renderer>().materials;
+                tempMats[0] = LAMP_LIT;
+                lastLamp.GetComponent<Renderer>().materials = tempMats;
             }
         }
     }

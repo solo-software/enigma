@@ -12,18 +12,22 @@ public class Rotor
     private int position;
     private int ring_offset;
     private int[] turn_positions;
+    private Transform rotorTransform;
+
+    private static Vector3 ROTOR_STEP = new Vector3(0, -360 / 26, 0);
 
     private static int mod(int x, int y)
     {
         return (x % y + y) % y;
     }
 
-    public Rotor(int[] wiring, int[] turn_positions, int position = 0, int ring_offset = 0)
+    public Rotor(int[] wiring, int[] turn_positions, Transform rotorTransform, int position = 0, int ring_offset = 0)
     {
         this.wiring = wiring;
         this.turn_positions = turn_positions;
         this.position = position;
         this.ring_offset = ring_offset;
+        this.rotorTransform = rotorTransform;
     }
 
     public int GetOutput(int input_index, bool signal_out)
@@ -41,6 +45,8 @@ public class Rotor
     public bool Advance()
     {
         position = mod(position + 1, 26);
+
+        rotorTransform.Rotate(ROTOR_STEP);
 
         return turn_positions.Contains(position - ring_offset) ? true : false;
     }
