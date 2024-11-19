@@ -928,6 +928,10 @@
       <Project>{C3D89284-4AD1-3703-2F60-627F0211CFDD}</Project>
       <Name>UnityEditor.TestRunner</Name>
     </ProjectReference>
+    <ProjectReference Include="EnigmaClassesAssembly.csproj">
+      <Project>{13F730EB-2FE3-49C1-F81C-76C5765CA713}</Project>
+      <Name>EnigmaClassesAssembly</Name>
+    </ProjectReference>
     <ProjectReference Include="UnityEditor.UI.csproj">
       <Project>{AEDDCDB4-3424-5A80-38A4-2F2784FE5534}</Project>
       <Name>UnityEditor.UI</Name>
