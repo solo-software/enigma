@@ -97,6 +97,7 @@ public class TestEnigmaFunctionality
         Y,
         Z
     }
+
     [Test]
     public void TestRotorIsolatedBehaviour()
     {
@@ -126,10 +127,30 @@ public class TestEnigmaFunctionality
         Rotor rTestRotor = new Rotor(ROTORS[2], TURNOVER_POSITIONS[2], null);
         EnigmaM3 testEnigma = new EnigmaM3(lTestRotor, mTestRotor, rTestRotor, REFLECTORS[0], ENTRY_WHEELS[0], ENTRY_WHEELS[0]);
         char[] plainText = { 'H', 'E', 'L', 'L', 'O'};
-        int[] cipherText = { 'I', 'L', 'B', 'D', 'A'}; // "HELLO" encrypted on these settings
+        char[] cipherText = { 'I', 'L', 'B', 'D', 'A'}; // "HELLO" encrypted on these settings
         // Test that "HELLO" encrypts to "ILBDA"
         for (int i=0; i < 5; i++){
             Assert.AreEqual(cipherText[i], testEnigma.Encrypt(plainText[i]));
+        }
+    }
+
+    [Test]
+    public void TestmRotorTurnover()
+    {
+        // Test that the machine encrypts as expected when the center rotor has a turnover
+        // Set up enigma with rotors I, II and III
+        Rotor lTestRotor = new Rotor(ROTORS[0], TURNOVER_POSITIONS[0], null);
+        Rotor mTestRotor = new Rotor(ROTORS[1], TURNOVER_POSITIONS[1], null);
+        Rotor rTestRotor = new Rotor(ROTORS[2], TURNOVER_POSITIONS[2], null, 19); // Set right rotor to position T which will cause a turnover of center rotor
+        EnigmaM3 testEnigma = new EnigmaM3(lTestRotor, mTestRotor, rTestRotor, REFLECTORS[0], ENTRY_WHEELS[0], ENTRY_WHEELS[0]);
+        Assert.AreEqual(testEnigma.GetRotorPosition(1), 0); // Test that the middle rotor starts in the "A" position
+        char[] plainText = { 'H', 'E', 'L', 'L', 'O' };
+        char[] cipherText = { 'Q', 'Y', 'B', 'S', 'A' }; // "HELLO" encrypted on these settings
+        // Test that "HELLO" encrypts to "QYBSA"
+        for (int i = 0; i < 5; i++)
+        {
+            Assert.AreEqual(cipherText[i], testEnigma.Encrypt(plainText[i]));
+            Assert.AreEqual(testEnigma.GetRotorPosition(1), i >= 2 ? 1 : 0); // Check that the center rotor turns over at the correct time, while encrypting the first "L", and not before
         }
     }
 

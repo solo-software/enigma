@@ -46,8 +46,16 @@ public class Rotor
     {
         position = mod(position + 1, 26);
 
-        rotorTransform.Rotate(ROTOR_STEP);
+        if (rotorTransform)
+        {
+            rotorTransform.Rotate(ROTOR_STEP);
+        }
 
         return turn_positions.Contains(position - ring_offset) ? true : false;
+    }
+
+    public int GetPosition()
+    {
+        return position;
     }
 }

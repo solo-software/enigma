@@ -65,4 +65,17 @@ public class EnigmaM3
 
         return CHARS[active_index];
     }
+
+    public int GetRotorPosition(int rotorIndex)
+    {
+        if (rotorIndex == 0)
+        {
+            return lRotor.GetPosition();
+        }
+        if (rotorIndex == 1)
+        {
+            return mRotor.GetPosition();
+        }
+        return rRotor.GetPosition();
+    }
 }
