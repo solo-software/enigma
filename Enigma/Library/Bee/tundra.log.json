@@ -311,12 +311,3 @@
 {"msg":"enqueueNode","enqueuedNodeAnnotation":"MovedFromExtractorCombine Library/Bee/artifacts/1900b0aE.dag/Unity.ShaderGraph.Editor.dll.mvfrm","enqueuedNodeIndex":260,"enqueueingNodeAnnotation":"Csc Library/Bee/artifacts/1900b0aE.dag/Unity.ShaderGraph.Editor.dll (+2 others)","enqueueingNodeIndex":255}
 {"msg":"enqueueNode","enqueuedNodeAnnotation":"WriteText Library/Bee/artifacts/1900b0aE.dag/Unity.ShaderGraph.Editor.dll.mvfrm.rsp","enqueuedNodeIndex":259,"enqueueingNodeAnnotation":"MovedFromExtractorCombine Library/Bee/artifacts/1900b0aE.dag/Unity.ShaderGraph.Editor.dll.mvfrm","enqueueingNodeIndex":260}
 {"msg":"enqueueNode","enqueuedNodeAnnotation":"CopyFiles Library/ScriptAssemblies/Unity.ShaderGraph.Editor.pdb","enqueuedNodeIndex":312,"enqueueingNodeAnnotation":"ScriptAssemblies","enqueueingNodeIndex":6}
-{"msg":"nodeRetryBuild","annotation":"Csc Library/Bee/artifacts/1900b0aE.dag/Tests.dll (+2 others)","index":242}
-{"msg":"runNodeAction","annotation":"Csc Library/Bee/artifacts/1900b0aE.dag/Tests.dll (+2 others)","displayName":"Csc Tests","index":242}
-{"msg":"noderesult","processed_node_count":308,"number_of_nodes_ever_queued":312,"annotation":"Csc Library/Bee/artifacts/1900b0aE.dag/Tests.dll (+2 others)","index":242,"exitcode":0,"outputfile":"Library\\Bee\\artifacts\\1900b0aE.dag\\Tests.dll"}
-{"msg":"inputSignatureChanged","annotation":"CopyFiles Library/ScriptAssemblies/Tests.pdb","index":308,"changes":[{"key":"FileList","value":["Library\\Bee\\artifacts\\1900b0aE.dag\\Tests.pdb"],"oldvalue":[],"dependency":"explicit"}]}
-{"msg":"inputSignatureChanged","annotation":"CopyFiles Library/ScriptAssemblies/Tests.dll","index":307,"changes":[{"key":"FileList","value":["Library\\Bee\\artifacts\\1900b0aE.dag\\Tests.dll"],"oldvalue":[],"dependency":"explicit"}]}
-{"msg":"runNodeAction","annotation":"CopyFiles Library/ScriptAssemblies/Tests.pdb","displayName":"Copying Tests.pdb","index":308}
-{"msg":"runNodeAction","annotation":"CopyFiles Library/ScriptAssemblies/Tests.dll","displayName":"Copying Tests.dll","index":307}
-{"msg":"noderesult","processed_node_count":309,"number_of_nodes_ever_queued":312,"annotation":"CopyFiles Library/ScriptAssemblies/Tests.pdb","index":308,"exitcode":0,"outputfile":"Library\\ScriptAssemblies\\Tests.pdb"}
-{"msg":"noderesult","processed_node_count":309,"number_of_nodes_ever_queued":312,"annotation":"CopyFiles Library/ScriptAssemblies/Tests.dll","index":307,"exitcode":0,"outputfile":"Library\\ScriptAssemblies\\Tests.dll"}
