@@ -121,7 +121,7 @@ public class TestEnigmaFunctionality
     public void TestStandardSteppingBehaviour()
     {
         // Test that the machine encrypts as expected with no turnovers and no plugboard
-        // Set up enigma with rotors I, II and III
+        // Set up enigma with rotors I, II and III in state AAA
         Rotor lTestRotor = new Rotor(ROTORS[0], TURNOVER_POSITIONS[0], null);
         Rotor mTestRotor = new Rotor(ROTORS[1], TURNOVER_POSITIONS[1], null);
         Rotor rTestRotor = new Rotor(ROTORS[2], TURNOVER_POSITIONS[2], null);
@@ -135,10 +135,30 @@ public class TestEnigmaFunctionality
     }
 
     [Test]
+    public void TestZToA()
+    {
+        //Test that behaviour is as expected when the right rotor steps from Z back to A
+        //Set up enigma with rotors I, II and III in state AAY
+        Rotor lTestRotor = new Rotor(ROTORS[0], TURNOVER_POSITIONS[0], null);
+        Rotor mTestRotor = new Rotor(ROTORS[1], TURNOVER_POSITIONS[1], null);
+        Rotor rTestRotor = new Rotor(ROTORS[2], TURNOVER_POSITIONS[2], null, 24);
+        EnigmaM3 testEnigma = new EnigmaM3(lTestRotor, mTestRotor, rTestRotor, REFLECTORS[0], ENTRY_WHEELS[0], ENTRY_WHEELS[0]);
+        char[] plainText = { 'H', 'E', 'L', 'L', 'O' };
+        char[] cipherText = { 'R', 'B', 'P', 'E', 'N' }; // "HELLO" encrypted on these settings
+        // Test that "HELLO" encrypts to "RBPEN"
+        for (int i = 0; i < 5; i++)
+        {
+            Assert.AreEqual(cipherText[i], testEnigma.Encrypt(plainText[i]));
+        }
+        // Test that the right rotor finishes in position 'D'
+        Assert.AreEqual(testEnigma.GetRotorPosition(2), 3);
+    }
+
+    [Test]
     public void TestmRotorTurnover()
     {
         // Test that the machine encrypts as expected when the center rotor has a turnover
-        // Set up enigma with rotors I, II and III
+        // Set up enigma with rotors I, II and III in state AAT
         Rotor lTestRotor = new Rotor(ROTORS[0], TURNOVER_POSITIONS[0], null);
         Rotor mTestRotor = new Rotor(ROTORS[1], TURNOVER_POSITIONS[1], null);
         Rotor rTestRotor = new Rotor(ROTORS[2], TURNOVER_POSITIONS[2], null, 19); // Set right rotor to position T which will cause a turnover of center rotor
@@ -154,13 +174,44 @@ public class TestEnigmaFunctionality
         }
     }
 
-    // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
-    // `yield return null;` to skip a frame.
-    [UnityTest]
-    public IEnumerator TestEnigmaFunctionalityWithEnumeratorPasses()
+    [Test]
+    public void TestlRotorTurnover()
     {
-        // Use the Assert class to test conditions.
-        // Use yield to skip a frame.
-        yield return null;
+        // Test that the machine encrypts as expected when the left rotor has a turnover
+        // Note that this should also cause "double stepping" of the middle rotor
+        // Which we will also check for in this test
+        // In this test there will be a turnover of the middle rotor to position "E"
+        // Which will then cause a turnover of the left rotor to position "B" on the next encryption
+        // This will cause a double step of the middle rotor
+        // Set up enigma with rotors I, II and III in state ADT
+        Rotor lTestRotor = new Rotor(ROTORS[0], TURNOVER_POSITIONS[0], null);
+        Rotor mTestRotor = new Rotor(ROTORS[1], TURNOVER_POSITIONS[1], null, 3);
+        Rotor rTestRotor = new Rotor(ROTORS[2], TURNOVER_POSITIONS[2], null, 19);
+        EnigmaM3 testEnigma = new EnigmaM3(lTestRotor, mTestRotor, rTestRotor, REFLECTORS[0], ENTRY_WHEELS[0], ENTRY_WHEELS[0]);
+        Assert.AreEqual(testEnigma.GetRotorPosition(0), 0); // Test that left rotor starts in the "A" position
+        Assert.AreEqual(testEnigma.GetRotorPosition(1), 3); // Test that middle rotor starts in the "D" position
+        char[] plainText = { 'H', 'E', 'L', 'L', 'O' };
+        char[] cipherText = { 'B', 'A', 'H', 'X', 'V' }; // "HELLO" encrypted on these settings
+        for (int i = 0; i < 5; i++)
+        {
+            Assert.AreEqual(cipherText[i], testEnigma.Encrypt(plainText[i]));
+            if (i < 2)
+            {
+                Assert.AreEqual(testEnigma.GetRotorPosition(1), 3); // Until entry of the first "L" the middle rotor should remain in position "D"
+            }
+            if (i == 2)
+            {
+                Assert.AreEqual(testEnigma.GetRotorPosition(1), 4); // After entry of the first "L" the middle rotor should turnover to position "E"
+            }
+            if (i > 2)
+            {
+                Assert.AreEqual(testEnigma.GetRotorPosition(0), 1); // Entry of the second "L" should cause the left rotor to turnover
+                Assert.AreEqual(testEnigma.GetRotorPosition(1), 5); // It should also cause an additional turnover of the middle rotor which should know be in position "F"
+            }
+            else
+            {
+                Assert.AreEqual(testEnigma.GetRotorPosition(0), 0); // Until the second "L" the left rotor should remain in position "A"
+            }
+        }
     }
 }

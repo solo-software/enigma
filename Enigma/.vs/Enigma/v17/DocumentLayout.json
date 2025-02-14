@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\BOB-F\\git\\enigma\\Enigma\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\BOB-F\\git\\enigma\\Enigma\\Assets\\Classes\\Controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Classes\\Controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{13F730EB-2FE3-49C1-F81C-76C5765CA713}|EnigmaClassesAssembly.csproj|c:\\users\\bob-f\\git\\enigma\\enigma\\assets\\classes\\controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{13F730EB-2FE3-49C1-F81C-76C5765CA713}|EnigmaClassesAssembly.csproj|solutionrelative:assets\\classes\\controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\BOB-F\\git\\enigma\\Enigma\\Assets\\Classes\\EnigmaM3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Classes\\EnigmaM3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C659D3FA-2A82-E57A-9F35-E4E4CB680A4C}|Tests.csproj|C:\\Users\\BOB-F\\git\\enigma\\Enigma\\assets\\tests\\testenigmafunctionality.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C659D3FA-2A82-E57A-9F35-E4E4CB680A4C}|Tests.csproj|solutionrelative:assets\\tests\\testenigmafunctionality.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\BOB-F\\git\\enigma\\Enigma\\Assets\\Classes\\Rotor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Classes\\Rotor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{13F730EB-2FE3-49C1-F81C-76C5765CA713}|EnigmaClassesAssembly.csproj|C:\\Users\\BOB-F\\git\\enigma\\Enigma\\assets\\classes\\plugboardsocket.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{13F730EB-2FE3-49C1-F81C-76C5765CA713}|EnigmaClassesAssembly.csproj|solutionrelative:assets\\classes\\plugboardsocket.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{13F730EB-2FE3-49C1-F81C-76C5765CA713}|EnigmaClassesAssembly.csproj|C:\\Users\\BOB-F\\git\\enigma\\Enigma\\Assets\\Classes\\Rotor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{13F730EB-2FE3-49C1-F81C-76C5765CA713}|EnigmaClassesAssembly.csproj|solutionrelative:Assets\\Classes\\Rotor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{13F730EB-2FE3-49C1-F81C-76C5765CA713}|EnigmaClassesAssembly.csproj|C:\\Users\\BOB-F\\git\\enigma\\Enigma\\Assets\\Classes\\EnigmaM3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{13F730EB-2FE3-49C1-F81C-76C5765CA713}|EnigmaClassesAssembly.csproj|solutionrelative:Assets\\Classes\\EnigmaM3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,8 +30,36 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PlugboardSocket.cs",
+              "DocumentMoniker": "C:\\Users\\BOB-F\\git\\enigma\\Enigma\\Assets\\Classes\\PlugboardSocket.cs",
+              "RelativeDocumentMoniker": "Assets\\Classes\\PlugboardSocket.cs",
+              "ToolTip": "C:\\Users\\BOB-F\\git\\enigma\\Enigma\\Assets\\Classes\\PlugboardSocket.cs",
+              "RelativeToolTip": "Assets\\Classes\\PlugboardSocket.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-13T13:19:17.786Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TestEnigmaFunctionality.cs",
+              "DocumentMoniker": "C:\\Users\\BOB-F\\git\\enigma\\Enigma\\Assets\\Tests\\TestEnigmaFunctionality.cs",
+              "RelativeDocumentMoniker": "Assets\\Tests\\TestEnigmaFunctionality.cs",
+              "ToolTip": "C:\\Users\\BOB-F\\git\\enigma\\Enigma\\Assets\\Tests\\TestEnigmaFunctionality.cs",
+              "RelativeToolTip": "Assets\\Tests\\TestEnigmaFunctionality.cs",
+              "ViewState": "AgIAAMQAAAAAAAAAAAAAwNcAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-05T15:30:12.731Z"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -32,36 +68,34 @@
               "RelativeDocumentMoniker": "Assets\\Classes\\Controller.cs",
               "ToolTip": "C:\\Users\\BOB-F\\git\\enigma\\Enigma\\Assets\\Classes\\Controller.cs",
               "RelativeToolTip": "Assets\\Classes\\Controller.cs",
-              "ViewState": "AgIAAFQAAAAAAAAAAAAAAHEAAAAuAAAAAAAAAA==",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAAwEIBAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-04T21:27:40.269Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "EnigmaM3.cs",
               "DocumentMoniker": "C:\\Users\\BOB-F\\git\\enigma\\Enigma\\Assets\\Classes\\EnigmaM3.cs",
               "RelativeDocumentMoniker": "Assets\\Classes\\EnigmaM3.cs",
               "ToolTip": "C:\\Users\\BOB-F\\git\\enigma\\Enigma\\Assets\\Classes\\EnigmaM3.cs",
               "RelativeToolTip": "Assets\\Classes\\EnigmaM3.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABUAAAA4AAAAAAAAAA==",
+              "ViewState": "AgIAAEIAAAAAAAAAAAAuwCEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-04T21:27:40.275Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-04T21:27:40.275Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Rotor.cs",
               "DocumentMoniker": "C:\\Users\\BOB-F\\git\\enigma\\Enigma\\Assets\\Classes\\Rotor.cs",
               "RelativeDocumentMoniker": "Assets\\Classes\\Rotor.cs",
               "ToolTip": "C:\\Users\\BOB-F\\git\\enigma\\Enigma\\Assets\\Classes\\Rotor.cs",
               "RelativeToolTip": "Assets\\Classes\\Rotor.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAQwB4AAAA1AAAAAAAAAA==",
+              "ViewState": "AgIAABgAAAAAAAAAAAAmwDIAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-04T21:27:40.28Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-04T21:27:40.28Z"
             }
           ]
         }

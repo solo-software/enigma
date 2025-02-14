@@ -1,15 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Design.Serialization;
 using System.Linq;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class Controller : MonoBehaviour
 {
     private EnigmaM3 enigma;
     private GameObject lastLamp = null;
-    private static char[] CHARS = new char[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
     private static char[] QWERTY = new char[] { 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Z', 'X', 'C', 'V', 'B', 'N', 'M' };
 
     [SerializeField] private RotorNumber lRotorNumber = RotorNumber.I;
@@ -27,13 +30,21 @@ public class Controller : MonoBehaviour
     [SerializeField] private EntryWheel entryWheel = EntryWheel.STANDARD;
     [SerializeField] private Reflector reflector = Reflector.B;
 
+    [SerializeField] private int numWireSegments = 10;
+    [SerializeField] private float wireParabolaHeight = 0.01f;
+    [SerializeField] private float wireThickness = 0.00001f;
+
     [SerializeField] private GameObject ROTOR_MODEL;
     [SerializeField] private List<GameObject> ALPHABET_TYRES;
     [SerializeField] private GameObject LAMP_MODEL;
     [SerializeField] private GameObject LAMP_LABEL;
+    [SerializeField] private GameObject PLUG_SOCKET_MODEL;
+    [SerializeField] private GameObject PLUG_SOCKET_LABEL;
+    [SerializeField] private GameObject PLUG_MODEL;
 
     [SerializeField] private Material LAMP_UNLIT;
     [SerializeField] private Material LAMP_LIT;
+    [SerializeField] private Material PLUG_WIRE;
 
     private static int[][] ROTORS = 
     {
@@ -125,30 +136,52 @@ public class Controller : MonoBehaviour
         Z
     }
 
-    // Start is called before the first frame update
+    private int[] plugboardConfig = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25 };
+
+    private GameObject rootPlugSocket;
+    private GameObject leafPlugSocket;
+    private GameObject mousePlug;
+    private GameObject rootPlug;
+
+    private static Vector3 PLUG_WIRE_OFFSET = new Vector3(-0.005f, -0.006f, 0);
+
     void Start()
     {
         for (int i = 0; i < 26; i++)
         {
-            float xCoord = -0.065f;
-            float yCoord = 0.04f;
-            float zCoord = 0.1f - (0.025f * (i % 9));
+            float xCoordLamp = -0.065f;
+            float yCoordLamp = 0.04f;
+            float zCoordLamp = 0.1f - (0.025f * (i % 9));
+            float xCoordPlugSocket = -0.181f;
+            float yCoordPlugSocket = -0.007f;
+            float zCoordPlugSocket = 0.1f - (0.025f * (i % 9));
             if (i > 8)
             {
-                xCoord -= 0.02f;
-                zCoord -= 0.0125f;
+                xCoordLamp -= 0.02f;
+                zCoordLamp -= 0.0125f;
+                yCoordPlugSocket -= 0.016f;
+                zCoordPlugSocket -= 0.0125f;
             }
             if (i > 16)
             {
-                xCoord -= 0.02f;
-                zCoord = 0.1f - (0.025f * ((i + 1) % 9));
+                xCoordLamp -= 0.02f;
+                zCoordLamp = 0.1f - (0.025f * ((i + 1) % 9));
+                yCoordPlugSocket -= 0.016f;
+                zCoordPlugSocket = 0.1f - (0.025f * ((i + 1) % 9));
             }
 
-            GameObject thisLamp = GameObject.Instantiate(LAMP_MODEL, new Vector3(xCoord, yCoord, zCoord), Quaternion.Euler(-90, 0, 180));
+            GameObject thisLamp = GameObject.Instantiate(LAMP_MODEL, new Vector3(xCoordLamp, yCoordLamp, zCoordLamp), Quaternion.Euler(-90, 0, 180));
             thisLamp.name = "Lamp" + QWERTY[i].ToString();
 
             GameObject lampLabelCanvas = GameObject.Instantiate(LAMP_LABEL, thisLamp.GetComponent<Transform>());
             lampLabelCanvas.GetComponentInChildren<TextMeshProUGUI>().text = QWERTY[i].ToString();
+
+            GameObject thisPlugSocket = GameObject.Instantiate(PLUG_SOCKET_MODEL, new Vector3(xCoordPlugSocket, yCoordPlugSocket, zCoordPlugSocket), Quaternion.Euler(-90, 0, 180));
+            thisPlugSocket.name = "PlugSocket" + QWERTY[i].ToString();
+            thisPlugSocket.GetComponent<PlugboardSocket>().ENIGMA_CONTROLLER = this;
+
+            GameObject plugSocketLabelCanvas = GameObject.Instantiate(PLUG_SOCKET_LABEL, new Vector3(thisPlugSocket.GetComponent<Transform>().position.x - 0.0033f, thisPlugSocket.GetComponent<Transform>().position.y + 0.0115f, thisPlugSocket.GetComponent<Transform>().position.z), Quaternion.Euler(0, 90, 0), thisPlugSocket.GetComponent<Transform>()); 
+            plugSocketLabelCanvas.GetComponentInChildren<TextMeshProUGUI>().text = QWERTY[i].ToString();
         }
 
         GameObject rRotorObject = GameObject.Instantiate(ROTOR_MODEL, new Vector3(0, 0, 0f), Quaternion.Euler(90, 0, 180));
@@ -185,10 +218,34 @@ public class Controller : MonoBehaviour
         enigma = new EnigmaM3(lRotor, mRotor, rRotor, REFLECTORS[(int)reflector], ENTRY_WHEELS[(int)entryWheel], ENTRY_WHEELS[0]);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (mousePlug)
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 100))
+            {
+                mousePlug.transform.position = hit.point;
+            }
+            LineRenderer lineRenderer = rootPlug.GetComponent<LineRenderer>();
+            Vector3 start = rootPlug.transform.position;
+            Vector3 end = mousePlug.transform.position;
+            for (int i = 0; i < numWireSegments; i++)
+            {
+                float t = (float)i / (numWireSegments - 1);
+
+                // Linear interpolation between start and end points
+                Vector3 point = Vector3.Lerp(start, end, t);
+
+                // Add parabolic height based on t
+                point.y -= wireParabolaHeight * Mathf.Sin(Mathf.PI * t);
+
+                point += PLUG_WIRE_OFFSET;
+
+                lineRenderer.SetPosition(i, point);
+            }
+        }
     }
 
     private void OnGUI()
@@ -199,10 +256,12 @@ public class Controller : MonoBehaviour
             char[] key_code = e.keyCode.ToString().ToCharArray();
             if (key_code.Length == 1) {
                 char entered_char = key_code[0];
+                entered_char = (char)(plugboardConfig[entered_char - 65] + 65);
                 Debug.Log("Encrypting: " + entered_char.ToString());
                 char output_char = enigma.Encrypt(entered_char);
+                output_char = (char)(plugboardConfig[output_char - 65] + 65);
                 Debug.Log("Encrypted character: " +  output_char.ToString());
-                int outputIndex = CHARS.ToList().IndexOf(output_char);
+                int outputIndex = output_char - 65;
                 if (lastLamp != null)
                 {
                     Material[] lastTempMats = lastLamp.GetComponent<Renderer>().materials;
@@ -215,5 +274,92 @@ public class Controller : MonoBehaviour
                 lastLamp.GetComponent<Renderer>().materials = tempMats;
             }
         }
+    }
+
+    public void PlugSocketSelected(char plugChar, GameObject selectedPlugSocket)
+    {
+        if (plugboardConfig[plugChar - 65] == plugChar - 65)
+        {
+            if (!rootPlugSocket)
+            {
+                rootPlugSocket = selectedPlugSocket;
+                rootPlug = GameObject.Instantiate(PLUG_MODEL, rootPlugSocket.GetComponent<Transform>().position, Quaternion.Euler(new Vector3(-90, 0, 180)), rootPlugSocket.GetComponent<Transform>());
+                rootPlug.name = "Plug" + plugChar.ToString();
+                mousePlug = GameObject.Instantiate(PLUG_MODEL, rootPlugSocket.GetComponent<Transform>().position, Quaternion.Euler(new Vector3(-90, 0, 180)));
+                LineRenderer rootPlugWireRenderer = rootPlug.AddComponent<LineRenderer>();
+                rootPlugWireRenderer.startWidth = wireThickness;
+                rootPlugWireRenderer.endWidth = wireThickness;
+                rootPlugWireRenderer.material = PLUG_WIRE;
+                rootPlugWireRenderer.positionCount = numWireSegments;
+            }
+            else if (rootPlugSocket == selectedPlugSocket)
+            {
+                Destroy(GameObject.Find("Plug" + plugChar.ToString()));
+                Destroy(mousePlug);
+                mousePlug = null;
+                rootPlugSocket = null;
+            }
+            else
+            {
+                leafPlugSocket = selectedPlugSocket;
+                GameObject leafPlug = GameObject.Instantiate(PLUG_MODEL, leafPlugSocket.GetComponent<Transform>().position, Quaternion.Euler(new Vector3(-90, 0, 180)), leafPlugSocket.GetComponent<Transform>());
+                leafPlug.name = "Plug" + plugChar.ToString();
+                Destroy(mousePlug);
+                mousePlug = null;
+                MakePlugboardConnection();
+            }
+        }
+        else
+        {
+            if (!leafPlugSocket) {
+                leafPlugSocket = selectedPlugSocket;
+                rootPlugSocket = GameObject.Find("PlugSocket" + ((char)(plugboardConfig[plugChar - 65] + 65)).ToString());
+                GameObject leafPlug = GameObject.Find("Plug" + plugChar.ToString());
+                rootPlug = GameObject.Find("Plug" + ((char)(plugboardConfig[plugChar - 65] + 65)).ToString());
+                LineRenderer lr = leafPlug.GetComponent<LineRenderer>();
+                if (lr)
+                {
+                    Destroy(lr);
+                    LineRenderer rootPlugWireRenderer = rootPlug.AddComponent<LineRenderer>();
+                    rootPlugWireRenderer.startWidth = wireThickness;
+                    rootPlugWireRenderer.endWidth = wireThickness;
+                    rootPlugWireRenderer.material = PLUG_WIRE;
+                    rootPlugWireRenderer.positionCount = numWireSegments;
+                }
+                Destroy(GameObject.Find("Plug" + plugChar.ToString()));
+                mousePlug = GameObject.Instantiate(PLUG_MODEL, rootPlugSocket.GetComponent<Transform>().position, Quaternion.Euler(new Vector3(-90, 0, 180)));
+                BreakPlugboardConnection();
+            }
+            else
+            {
+                Destroy(GameObject.Find("Plug" + plugChar.ToString()));
+                Destroy(mousePlug);
+                mousePlug = null;
+                rootPlugSocket = null;
+            }
+        }
+    }
+
+    private void MakePlugboardConnection()
+    {
+        int rootIndex = rootPlugSocket.GetComponent<PlugboardSocket>().GetPlugCharacter() - 65;
+        int leafIndex = leafPlugSocket.GetComponent<PlugboardSocket>().GetPlugCharacter() - 65;
+
+        plugboardConfig[rootIndex] = leafIndex;
+        plugboardConfig[leafIndex] = rootIndex;
+
+        Debug.Log("Characters connected: " + ((char)(rootIndex + 65)).ToString() + " and " + ((char)(leafIndex + 65)).ToString());
+
+        rootPlugSocket = null;
+        leafPlugSocket = null;
+    }
+
+    private void BreakPlugboardConnection()
+    {
+        int rootIndex = rootPlugSocket.GetComponent<PlugboardSocket>().GetPlugCharacter() - 65;
+        int leafIndex = leafPlugSocket.GetComponent<PlugboardSocket>().GetPlugCharacter() - 65;
+
+        plugboardConfig[rootIndex] = rootIndex;
+        plugboardConfig[leafIndex] = leafIndex;
     }
 }

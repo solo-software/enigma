@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CoverageReport scope="Summary">
+  <Summary>
+    <Generatedon>12/02/2025 - 12:20:46</Generatedon>
+    <Parser>MultiReportParser (2x OpenCoverParser)</Parser>
+    <Assemblies>2</Assemblies>
+    <Classes>4</Classes>
+    <Files>4</Files>
+    <Coveredlines>169</Coveredlines>
+    <Uncoveredlines>82</Uncoveredlines>
+    <Coverablelines>251</Coverablelines>
+    <Totallines>578</Totallines>
+    <Linecoverage>67.3</Linecoverage>
+    <Coveredbranches>0</Coveredbranches>
+    <Totalbranches>0</Totalbranches>
+    <Coveredmethods>18</Coveredmethods>
+    <Totalmethods>21</Totalmethods>
+    <Methodcoverage>85.7</Methodcoverage>
+  </Summary>
+  <Coverage>
+    <Assembly name="EnigmaClassesAssembly" classes="3" coverage="51.1" coveredlines="86" coverablelines="168" totallines="361" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="12" totalmethods="15" methodcoverage="80">
+      <Class name="Controller" coverage="13.1" coveredlines="12" coverablelines="91" totallines="219" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="2" totalmethods="5" methodcoverage="40" />
+      <Class name="EnigmaM3" coverage="100" coveredlines="48" coverablelines="48" totallines="81" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="4" totalmethods="4" methodcoverage="100" />
+      <Class name="Rotor" coverage="89.6" coveredlines="26" coverablelines="29" totallines="61" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="6" totalmethods="6" methodcoverage="100" />
+    </Assembly>
+    <Assembly name="Tests" classes="1" coverage="100" coveredlines="83" coverablelines="83" totallines="217" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="6" totalmethods="6" methodcoverage="100">
+      <Class name="TestEnigmaFunctionality" coverage="100" coveredlines="83" coverablelines="83" totallines="217" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="6" totalmethods="6" methodcoverage="100" />
+    </Assembly>
+  </Coverage>
+</CoverageReport>

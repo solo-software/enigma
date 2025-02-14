@@ -122,6 +122,32 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &95482615 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3f9d545b3ae939846922502b7daa208b, type: 3}
+  m_PrefabInstance: {fileID: 348463043}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &95482619
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95482615}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.007735729, y: 0.2500001, z: 0.15891968}
+  m_Center: {x: -0.17936224, y: 9.0022e-17, z: 0.021959731}
 --- !u!1 &168740607
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,6 +203,9 @@ MonoBehaviour:
   rRotorRingSetting: 0
   entryWheel: 0
   reflector: 0
+  numWireSegments: 16
+  wireParabolaHeight: 0.015
+  wireThickness: 0.003
   ROTOR_MODEL: {fileID: 919132149155446097, guid: 90b15b82314028045bf8c84b8c1ec412, type: 3}
   ALPHABET_TYRES:
   - {fileID: 919132149155446097, guid: f7f2c781d65c62d49a3d2558e0ce5d36, type: 3}
@@ -189,8 +218,12 @@ MonoBehaviour:
   - {fileID: 919132149155446097, guid: d24bc74978e957d4d85b729ebb467a1b, type: 3}
   LAMP_MODEL: {fileID: 919132149155446097, guid: 9315899eec7f6e54795164ed923e4d59, type: 3}
   LAMP_LABEL: {fileID: 8838959446039529134, guid: 39ab0c049affa3e43924be88266a995c, type: 3}
+  PLUG_SOCKET_MODEL: {fileID: 835786321998473645, guid: b5174d97622a3774790eb10b88d44ac9, type: 3}
+  PLUG_SOCKET_LABEL: {fileID: 8838959446039529134, guid: 730b7d40f155ec142aaf4e2281427fc1, type: 3}
+  PLUG_MODEL: {fileID: 919132149155446097, guid: 4c6d2004de7a2234095a6778be56ffd2, type: 3}
   LAMP_UNLIT: {fileID: 2100000, guid: 8fcf7661a9efa7f44b0d98cca2dad331, type: 2}
   LAMP_LIT: {fileID: 2100000, guid: ae8204510931b904f9cf0acd39bb5b2c, type: 2}
+  PLUG_WIRE: {fileID: 2100000, guid: aa09c2b77fd982140b0ee953599c29b3, type: 2}
 --- !u!1001 &348463043
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -246,7 +279,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3f9d545b3ae939846922502b7daa208b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 95482619}
   m_SourcePrefab: {fileID: 100100000, guid: 3f9d545b3ae939846922502b7daa208b, type: 3}
 --- !u!1 &705507993
 GameObject:
@@ -427,13 +463,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.29883623, y: 0.64085644, z: -0.29883623, w: 0.64085644}
-  m_LocalPosition: {x: -0.25, y: 0.2, z: 0}
+  m_LocalRotation: {x: 0.011560028, y: 0.7070123, z: -0.011559952, w: 0.7070123}
+  m_LocalPosition: {x: -0.2902, y: -0.0151, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 50, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 1.873, y: 90, z: 0}
 --- !u!1 &1223558966
 GameObject:
   m_ObjectHideFlags: 0
