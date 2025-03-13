@@ -13,7 +13,7 @@ public class Controller : MonoBehaviour
 {
     private EnigmaM3 enigma;
     private GameObject lastLamp = null;
-    private static char[] QWERTY = new char[] { 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Z', 'X', 'C', 'V', 'B', 'N', 'M' };
+    private static char[] QWERTY = new char[] { 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'P', 'L', 'Z', 'X', 'C', 'V', 'B', 'N', 'M' };
 
     [SerializeField] private RotorNumber lRotorNumber = RotorNumber.I;
     [SerializeField] private RotorNumber mRotorNumber = RotorNumber.II;
@@ -41,6 +41,8 @@ public class Controller : MonoBehaviour
     [SerializeField] private GameObject PLUG_SOCKET_MODEL;
     [SerializeField] private GameObject PLUG_SOCKET_LABEL;
     [SerializeField] private GameObject PLUG_MODEL;
+    [SerializeField] private GameObject KEY_MODEL;
+    [SerializeField] private GameObject KEY_LABEL;
 
     [SerializeField] private Material LAMP_UNLIT;
     [SerializeField] private Material LAMP_LIT;
@@ -155,12 +157,18 @@ public class Controller : MonoBehaviour
             float xCoordPlugSocket = -0.181f;
             float yCoordPlugSocket = -0.007f;
             float zCoordPlugSocket = 0.1f - (0.025f * (i % 9));
+            float xCoordKey = -0.13f;
+            float yCoordKey = 0.04f;
+            float zCoordKey = 0.1f - (0.025f *  (i % 9));
             if (i > 8)
             {
                 xCoordLamp -= 0.02f;
                 zCoordLamp -= 0.0125f;
                 yCoordPlugSocket -= 0.016f;
                 zCoordPlugSocket -= 0.0125f;
+                xCoordKey -= 0.02f;
+                yCoordKey -= 0.008f;
+                zCoordKey -= 0.0125f;
             }
             if (i > 16)
             {
@@ -168,6 +176,9 @@ public class Controller : MonoBehaviour
                 zCoordLamp = 0.1f - (0.025f * ((i + 1) % 9));
                 yCoordPlugSocket -= 0.016f;
                 zCoordPlugSocket = 0.1f - (0.025f * ((i + 1) % 9));
+                xCoordKey -= 0.02f;
+                yCoordKey -= 0.008f;
+                zCoordKey = 0.1f - (0.025f * ((i + 1) % 9));
             }
 
             GameObject thisLamp = GameObject.Instantiate(LAMP_MODEL, new Vector3(xCoordLamp, yCoordLamp, zCoordLamp), Quaternion.Euler(-90, 0, 180));
@@ -182,6 +193,12 @@ public class Controller : MonoBehaviour
 
             GameObject plugSocketLabelCanvas = GameObject.Instantiate(PLUG_SOCKET_LABEL, new Vector3(thisPlugSocket.GetComponent<Transform>().position.x - 0.0033f, thisPlugSocket.GetComponent<Transform>().position.y + 0.0115f, thisPlugSocket.GetComponent<Transform>().position.z), Quaternion.Euler(0, 90, 0), thisPlugSocket.GetComponent<Transform>()); 
             plugSocketLabelCanvas.GetComponentInChildren<TextMeshProUGUI>().text = QWERTY[i].ToString();
+
+            GameObject thisKey = GameObject.Instantiate(KEY_MODEL, new Vector3(xCoordKey, yCoordKey, zCoordKey), Quaternion.Euler(180, 0, 180));
+            thisKey.name = "Key" + QWERTY[i].ToString();
+
+            GameObject keyLabelCanvas = GameObject.Instantiate(KEY_LABEL, new Vector3(thisKey.GetComponent<Transform>().position.x, thisKey.GetComponent<Transform>().position.y + 0.00121f, thisKey.GetComponent<Transform>().position.z), Quaternion.Euler(90, 90, 0), thisKey.GetComponent<Transform>());
+            keyLabelCanvas.GetComponentInChildren<TextMeshProUGUI>().text = QWERTY[i].ToString();
         }
 
         GameObject rRotorObject = GameObject.Instantiate(ROTOR_MODEL, new Vector3(0, 0, 0f), Quaternion.Euler(90, 0, 180));

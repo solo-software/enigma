@@ -64,6 +64,7 @@
     <Compile Include="Assets\Classes\EnigmaM3.cs" />
     <Compile Include="Assets\Classes\Controller.cs" />
     <Compile Include="Assets\Classes\PlugboardSocket.cs" />
+    <Compile Include="Assets\Classes\CameraController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Classes\EnigmaClassesAssembly.asmdef" />
