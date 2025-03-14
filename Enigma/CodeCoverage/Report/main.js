@@ -224,18 +224,20 @@ var assemblies = [
   {
     "name": "EnigmaClassesAssembly",
     "classes": [
-      { "name": "Controller", "rp": "EnigmaClassesAssembly_Controller.html", "cl": 12, "ucl": 79, "cal": 91, "tl": 219, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [13.1], "bch": [], "hc": [{ "et": "12/02/2025 - 12:20:43", "cl": 12, "ucl": 79, "cal": 91, "tl": 219, "lcq": 13.1, "cb": 0, "tb": 0, "bcq": 0 }] },
-      { "name": "EnigmaM3", "rp": "EnigmaClassesAssembly_EnigmaM3.html", "cl": 48, "ucl": 0, "cal": 48, "tl": 81, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [100], "bch": [], "hc": [{ "et": "12/02/2025 - 12:20:43", "cl": 48, "ucl": 0, "cal": 48, "tl": 81, "lcq": 100, "cb": 0, "tb": 0, "bcq": 0 }] },
-      { "name": "Rotor", "rp": "EnigmaClassesAssembly_Rotor.html", "cl": 26, "ucl": 3, "cal": 29, "tl": 61, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [89.6], "bch": [], "hc": [{ "et": "12/02/2025 - 12:20:43", "cl": 26, "ucl": 3, "cal": 29, "tl": 61, "lcq": 89.6, "cb": 0, "tb": 0, "bcq": 0 }] },
+      { "name": "CameraController", "rp": "EnigmaClassesAssembly_CameraController.html", "cl": 0, "ucl": 52, "cal": 52, "tl": 113, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [0], "bch": [], "hc": [{ "et": "14/03/2025 - 17:43:53", "cl": 0, "ucl": 52, "cal": 52, "tl": 113, "lcq": 0, "cb": 0, "tb": 0, "bcq": 0 }] },
+      { "name": "Controller", "rp": "EnigmaClassesAssembly_Controller.html", "cl": 6, "ucl": 239, "cal": 245, "tl": 537, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [13.1,2.4], "bch": [], "hc": [{ "et": "12/02/2025 - 12:20:43", "cl": 12, "ucl": 79, "cal": 91, "tl": 219, "lcq": 13.1, "cb": 0, "tb": 0, "bcq": 0 }, { "et": "14/03/2025 - 17:43:53", "cl": 6, "ucl": 239, "cal": 245, "tl": 537, "lcq": 2.4, "cb": 0, "tb": 0, "bcq": 0 }] },
+      { "name": "EnigmaM3", "rp": "EnigmaClassesAssembly_EnigmaM3.html", "cl": 36, "ucl": 12, "cal": 48, "tl": 109, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [100,75], "bch": [], "hc": [{ "et": "12/02/2025 - 12:20:43", "cl": 48, "ucl": 0, "cal": 48, "tl": 81, "lcq": 100, "cb": 0, "tb": 0, "bcq": 0 }, { "et": "14/03/2025 - 17:43:53", "cl": 36, "ucl": 12, "cal": 48, "tl": 109, "lcq": 75, "cb": 0, "tb": 0, "bcq": 0 }] },
+      { "name": "PlugboardSocket", "rp": "EnigmaClassesAssembly_PlugboardSocket.html", "cl": 0, "ucl": 15, "cal": 15, "tl": 41, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [0], "bch": [], "hc": [{ "et": "14/03/2025 - 17:43:53", "cl": 0, "ucl": 15, "cal": 15, "tl": 41, "lcq": 0, "cb": 0, "tb": 0, "bcq": 0 }] },
+      { "name": "Rotor", "rp": "EnigmaClassesAssembly_Rotor.html", "cl": 17, "ucl": 9, "cal": 26, "tl": 79, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [89.6,65.3], "bch": [], "hc": [{ "et": "12/02/2025 - 12:20:43", "cl": 26, "ucl": 3, "cal": 29, "tl": 61, "lcq": 89.6, "cb": 0, "tb": 0, "bcq": 0 }, { "et": "14/03/2025 - 17:43:53", "cl": 17, "ucl": 9, "cal": 26, "tl": 79, "lcq": 65.3, "cb": 0, "tb": 0, "bcq": 0 }] },
     ]},
   {
     "name": "Tests",
     "classes": [
-      { "name": "TestEnigmaFunctionality", "rp": "Tests_TestEnigmaFunctionality.html", "cl": 83, "ucl": 0, "cal": 83, "tl": 217, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [100], "bch": [], "hc": [{ "et": "12/02/2025 - 12:20:43", "cl": 83, "ucl": 0, "cal": 83, "tl": 217, "lcq": 100, "cb": 0, "tb": 0, "bcq": 0 }] },
+      { "name": "TestEnigmaFunctionality", "rp": "Tests_TestEnigmaFunctionality.html", "cl": 59, "ucl": 0, "cal": 59, "tl": 217, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [100,100], "bch": [], "hc": [{ "et": "12/02/2025 - 12:20:43", "cl": 83, "ucl": 0, "cal": 83, "tl": 217, "lcq": 100, "cb": 0, "tb": 0, "bcq": 0 }, { "et": "14/03/2025 - 17:43:53", "cl": 59, "ucl": 0, "cal": 59, "tl": 217, "lcq": 100, "cb": 0, "tb": 0, "bcq": 0 }] },
     ]},
 ];
 
-var historicCoverageExecutionTimes = [];
+var historicCoverageExecutionTimes = ["12/02/2025 - 12:20:43"];
 
 var riskHotspotMetrics = [
 ];

@@ -60,12 +60,14 @@
     <Analyzer Include="E:\Program Files\2022.3.51f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Classes\Rotor.cs" />
-    <Compile Include="Assets\Classes\EnigmaM3.cs" />
-    <Compile Include="Assets\Classes\Controller.cs" />
+    <Compile Include="Assets\Scripts\Rotor.cs" />
+    <Compile Include="Assets\Scripts\PlugboardSocket.cs" />
+    <Compile Include="Assets\Scripts\EnigmaM3.cs" />
+    <Compile Include="Assets\Scripts\Controller.cs" />
+    <Compile Include="Assets\Scripts\CameraController.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Classes\EnigmaClassesAssembly.asmdef" />
+    <None Include="Assets\Scripts\EnigmaClassesAssembly.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

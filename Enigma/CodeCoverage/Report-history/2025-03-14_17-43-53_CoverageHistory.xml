@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<coverage version="1.0" date="2025-03-14_17-43-53" tag="">
+  <assembly name="EnigmaClassesAssembly">
+    <class name="CameraController" coveredlines="0" coverablelines="52" totallines="113" coveredbranches="0" totalbranches="0" />
+    <class name="Controller" coveredlines="6" coverablelines="245" totallines="537" coveredbranches="0" totalbranches="0" />
+    <class name="EnigmaM3" coveredlines="36" coverablelines="48" totallines="109" coveredbranches="0" totalbranches="0" />
+    <class name="PlugboardSocket" coveredlines="0" coverablelines="15" totallines="41" coveredbranches="0" totalbranches="0" />
+    <class name="Rotor" coveredlines="17" coverablelines="26" totallines="79" coveredbranches="0" totalbranches="0" />
+  </assembly>
+  <assembly name="Tests">
+    <class name="TestEnigmaFunctionality" coveredlines="59" coverablelines="59" totallines="217" coveredbranches="0" totalbranches="0" />
+  </assembly>
+</coverage>

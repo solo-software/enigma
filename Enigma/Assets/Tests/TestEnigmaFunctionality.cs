@@ -106,7 +106,7 @@ public class TestEnigmaFunctionality
         for (int i = 0; i < ROTORS.Length; i++)
         {
             // For each wiring configuration, set up a test rotor
-            Rotor testRotor = new Rotor(ROTORS[i], TURNOVER_POSITIONS[i], null);
+            Rotor testRotor = new Rotor(ROTORS[i], TURNOVER_POSITIONS[i], null, null);
             for (int j = 0; j < 26; j++)
             {
                 // For each letter, test that it encrypts to the expected letter
@@ -122,9 +122,9 @@ public class TestEnigmaFunctionality
     {
         // Test that the machine encrypts as expected with no turnovers and no plugboard
         // Set up enigma with rotors I, II and III in state AAA
-        Rotor lTestRotor = new Rotor(ROTORS[0], TURNOVER_POSITIONS[0], null);
-        Rotor mTestRotor = new Rotor(ROTORS[1], TURNOVER_POSITIONS[1], null);
-        Rotor rTestRotor = new Rotor(ROTORS[2], TURNOVER_POSITIONS[2], null);
+        Rotor lTestRotor = new Rotor(ROTORS[0], TURNOVER_POSITIONS[0], null, null);
+        Rotor mTestRotor = new Rotor(ROTORS[1], TURNOVER_POSITIONS[1], null, null);
+        Rotor rTestRotor = new Rotor(ROTORS[2], TURNOVER_POSITIONS[2], null, null);
         EnigmaM3 testEnigma = new EnigmaM3(lTestRotor, mTestRotor, rTestRotor, REFLECTORS[0], ENTRY_WHEELS[0], ENTRY_WHEELS[0]);
         char[] plainText = { 'H', 'E', 'L', 'L', 'O'};
         char[] cipherText = { 'I', 'L', 'B', 'D', 'A'}; // "HELLO" encrypted on these settings
@@ -139,9 +139,9 @@ public class TestEnigmaFunctionality
     {
         //Test that behaviour is as expected when the right rotor steps from Z back to A
         //Set up enigma with rotors I, II and III in state AAY
-        Rotor lTestRotor = new Rotor(ROTORS[0], TURNOVER_POSITIONS[0], null);
-        Rotor mTestRotor = new Rotor(ROTORS[1], TURNOVER_POSITIONS[1], null);
-        Rotor rTestRotor = new Rotor(ROTORS[2], TURNOVER_POSITIONS[2], null, 24);
+        Rotor lTestRotor = new Rotor(ROTORS[0], TURNOVER_POSITIONS[0], null, null);
+        Rotor mTestRotor = new Rotor(ROTORS[1], TURNOVER_POSITIONS[1], null, null);
+        Rotor rTestRotor = new Rotor(ROTORS[2], TURNOVER_POSITIONS[2], null, null, 24);
         EnigmaM3 testEnigma = new EnigmaM3(lTestRotor, mTestRotor, rTestRotor, REFLECTORS[0], ENTRY_WHEELS[0], ENTRY_WHEELS[0]);
         char[] plainText = { 'H', 'E', 'L', 'L', 'O' };
         char[] cipherText = { 'R', 'B', 'P', 'E', 'N' }; // "HELLO" encrypted on these settings
@@ -159,9 +159,9 @@ public class TestEnigmaFunctionality
     {
         // Test that the machine encrypts as expected when the center rotor has a turnover
         // Set up enigma with rotors I, II and III in state AAT
-        Rotor lTestRotor = new Rotor(ROTORS[0], TURNOVER_POSITIONS[0], null);
-        Rotor mTestRotor = new Rotor(ROTORS[1], TURNOVER_POSITIONS[1], null);
-        Rotor rTestRotor = new Rotor(ROTORS[2], TURNOVER_POSITIONS[2], null, 19); // Set right rotor to position T which will cause a turnover of center rotor
+        Rotor lTestRotor = new Rotor(ROTORS[0], TURNOVER_POSITIONS[0], null, null);
+        Rotor mTestRotor = new Rotor(ROTORS[1], TURNOVER_POSITIONS[1], null, null);
+        Rotor rTestRotor = new Rotor(ROTORS[2], TURNOVER_POSITIONS[2], null, null, 19); // Set right rotor to position T which will cause a turnover of center rotor
         EnigmaM3 testEnigma = new EnigmaM3(lTestRotor, mTestRotor, rTestRotor, REFLECTORS[0], ENTRY_WHEELS[0], ENTRY_WHEELS[0]);
         Assert.AreEqual(testEnigma.GetRotorPosition(1), 0); // Test that the middle rotor starts in the "A" position
         char[] plainText = { 'H', 'E', 'L', 'L', 'O' };
@@ -184,9 +184,9 @@ public class TestEnigmaFunctionality
         // Which will then cause a turnover of the left rotor to position "B" on the next encryption
         // This will cause a double step of the middle rotor
         // Set up enigma with rotors I, II and III in state ADT
-        Rotor lTestRotor = new Rotor(ROTORS[0], TURNOVER_POSITIONS[0], null);
-        Rotor mTestRotor = new Rotor(ROTORS[1], TURNOVER_POSITIONS[1], null, 3);
-        Rotor rTestRotor = new Rotor(ROTORS[2], TURNOVER_POSITIONS[2], null, 19);
+        Rotor lTestRotor = new Rotor(ROTORS[0], TURNOVER_POSITIONS[0], null, null);
+        Rotor mTestRotor = new Rotor(ROTORS[1], TURNOVER_POSITIONS[1], null, null, 3);
+        Rotor rTestRotor = new Rotor(ROTORS[2], TURNOVER_POSITIONS[2], null, null, 19);
         EnigmaM3 testEnigma = new EnigmaM3(lTestRotor, mTestRotor, rTestRotor, REFLECTORS[0], ENTRY_WHEELS[0], ENTRY_WHEELS[0]);
         Assert.AreEqual(testEnigma.GetRotorPosition(0), 0); // Test that left rotor starts in the "A" position
         Assert.AreEqual(testEnigma.GetRotorPosition(1), 3); // Test that middle rotor starts in the "D" position

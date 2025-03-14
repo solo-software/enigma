@@ -1,28 +1,30 @@
 {
   "summary": {
-    "generatedon": "2025-02-12T12:20:46Z",
+    "generatedon": "2025-03-14T17:43:54Z",
     "parser": "MultiReportParser (2x OpenCoverParser)",
     "assemblies": 2,
-    "classes": 4,
-    "files": 4,
-    "coveredlines": 169,
-    "uncoveredlines": 82,
-    "coverablelines": 251,
-    "totallines": 578,
-    "linecoverage": 67.3,
+    "classes": 6,
+    "files": 6,
+    "coveredlines": 118,
+    "uncoveredlines": 327,
+    "coverablelines": 445,
+    "totallines": 1096,
+    "linecoverage": 26.5,
     "coveredbranches": 0,
     "totalbranches": 0,
-    "coveredmethods": 18,
-    "totalmethods": 21,
-    "methodcoverage": 85.7
+    "coveredmethods": 16,
+    "totalmethods": 49,
+    "methodcoverage": 32.6
  },
   "coverage": {
     "assemblies": [
-      { "name": "EnigmaClassesAssembly", "classes": 3, "coverage": 51.1, "coveredlines": 86, "coverablelines": 168, "totallines": 361, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 80, "coveredmethods": 12, "totalmethods": 15, "classesinassembly": [
-        { "name": "Controller", "coverage": 13.1, "coveredlines": 12, "coverablelines": 91, "totallines": 219, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 40, "coveredmethods": 2, "totalmethods": 5 },
-        { "name": "EnigmaM3", "coverage": 100, "coveredlines": 48, "coverablelines": 48, "totallines": 81, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 4, "totalmethods": 4 },
-        { "name": "Rotor", "coverage": 89.6, "coveredlines": 26, "coverablelines": 29, "totallines": 61, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 6, "totalmethods": 6 } ] },
-      { "name": "Tests", "classes": 1, "coverage": 100, "coveredlines": 83, "coverablelines": 83, "totallines": 217, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 6, "totalmethods": 6, "classesinassembly": [
-        { "name": "TestEnigmaFunctionality", "coverage": 100, "coveredlines": 83, "coverablelines": 83, "totallines": 217, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 6, "totalmethods": 6 } ] } ]
+      { "name": "EnigmaClassesAssembly", "classes": 5, "coverage": 15.2, "coveredlines": 59, "coverablelines": 386, "totallines": 879, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 23.2, "coveredmethods": 10, "totalmethods": 43, "classesinassembly": [
+        { "name": "CameraController", "coverage": 0, "coveredlines": 0, "coverablelines": 52, "totallines": 113, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 0, "coveredmethods": 0, "totalmethods": 8 },
+        { "name": "Controller", "coverage": 2.4, "coveredlines": 6, "coverablelines": 245, "totallines": 537, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 13.3, "coveredmethods": 2, "totalmethods": 15 },
+        { "name": "EnigmaM3", "coverage": 75, "coveredlines": 36, "coverablelines": 48, "totallines": 109, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 50, "coveredmethods": 3, "totalmethods": 6 },
+        { "name": "PlugboardSocket", "coverage": 0, "coveredlines": 0, "coverablelines": 15, "totallines": 41, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 0, "coveredmethods": 0, "totalmethods": 5 },
+        { "name": "Rotor", "coverage": 65.3, "coveredlines": 17, "coverablelines": 26, "totallines": 79, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 55.5, "coveredmethods": 5, "totalmethods": 9 } ] },
+      { "name": "Tests", "classes": 1, "coverage": 100, "coveredlines": 59, "coverablelines": 59, "totallines": 217, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 6, "totalmethods": 6, "classesinassembly": [
+        { "name": "TestEnigmaFunctionality", "coverage": 100, "coveredlines": 59, "coverablelines": 59, "totallines": 217, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 6, "totalmethods": 6 } ] } ]
   }
 }

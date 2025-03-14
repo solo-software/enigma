@@ -213,8 +213,8 @@
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.core@14.0.11\Runtime\Lighting\ProbeVolume\ProbeReferenceVolume.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.core@14.0.11\Runtime\Utilities\BatchRendererGroupGlobals.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.core@14.0.11\Runtime\Debugging\IDebugDisplaySettingsData.cs" />
-    <Compile Include="Library\PackageCache\com.unity.render-pipelines.core@14.0.11\Runtime\RenderGraph\RenderGraphResourceTexture.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.core@14.0.11\Runtime\Utilities\CoreRenderPipelinePreferences.cs" />
+    <Compile Include="Library\PackageCache\com.unity.render-pipelines.core@14.0.11\Runtime\RenderGraph\RenderGraphResourceTexture.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.core@14.0.11\Runtime\Debugging\Prefabs\Scripts\DebugUIHandlerVector3.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.core@14.0.11\Runtime\Textures\DepthBits.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.core@14.0.11\Runtime\Lighting\ProbeVolume\ProbeVolume.Migration.cs" />
