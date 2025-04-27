@@ -3,7 +3,7 @@
   "WorkspaceRootPath": "C:\\Users\\BOB-F\\git\\enigma\\Enigma\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{13F730EB-2FE3-49C1-F81C-76C5765CA713}|EnigmaClassesAssembly.csproj|C:\\Users\\BOB-F\\git\\enigma\\Enigma\\assets\\scripts\\controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{13F730EB-2FE3-49C1-F81C-76C5765CA713}|EnigmaClassesAssembly.csproj|c:\\users\\bob-f\\git\\enigma\\enigma\\assets\\scripts\\controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{13F730EB-2FE3-49C1-F81C-76C5765CA713}|EnigmaClassesAssembly.csproj|solutionrelative:assets\\scripts\\controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -11,7 +11,7 @@
       "RelativeMoniker": "D:0:0:{13F730EB-2FE3-49C1-F81C-76C5765CA713}|EnigmaClassesAssembly.csproj|solutionrelative:assets\\scripts\\cameracontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C659D3FA-2A82-E57A-9F35-E4E4CB680A4C}|Tests.csproj|c:\\users\\bob-f\\git\\enigma\\enigma\\assets\\tests\\testenigmafunctionality.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C659D3FA-2A82-E57A-9F35-E4E4CB680A4C}|Tests.csproj|C:\\Users\\BOB-F\\git\\enigma\\Enigma\\assets\\tests\\testenigmafunctionality.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C659D3FA-2A82-E57A-9F35-E4E4CB680A4C}|Tests.csproj|solutionrelative:assets\\tests\\testenigmafunctionality.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -50,8 +50,7 @@
               "RelativeToolTip": "Assets\\Tests\\TestEnigmaFunctionality.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAMsAAACUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-27T14:08:16.254Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-27T14:08:16.254Z"
             },
             {
               "$type": "Document",
@@ -63,8 +62,7 @@
               "RelativeToolTip": "Assets\\Scripts\\CameraController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAHoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-25T10:41:11.206Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-25T10:41:11.206Z"
             },
             {
               "$type": "Document",
@@ -74,7 +72,7 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\Controller.cs",
               "ToolTip": "C:\\Users\\BOB-F\\git\\enigma\\Enigma\\Assets\\Scripts\\Controller.cs",
               "RelativeToolTip": "Assets\\Scripts\\Controller.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHcCAAAEAAAAAAAAAA==",
+              "ViewState": "AgIAACAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-25T10:40:19.838Z",
               "EditorCaption": ""
@@ -113,8 +111,7 @@
               "RelativeToolTip": "Assets\\Scripts\\EnigmaM3.cs",
               "ViewState": "AgIAADwAAAAAAAAAAAAmwGQAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-25T10:38:42.91Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-25T10:38:42.91Z"
             }
           ]
         }

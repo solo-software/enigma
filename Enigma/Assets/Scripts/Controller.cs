@@ -367,7 +367,7 @@ public class Controller : MonoBehaviour
                 notesText.text += output_char.ToString();
                 // If the group has reached four characters, add a space
                 // And reset the group counter
-                if (groupLength == 4)
+                if (groupLength == 5)
                 {
                     notesText.text += " ";
                     groupLength = 0;

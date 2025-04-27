@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <CoverageReport scope="Summary">
   <Summary>
-    <Generatedon>27/04/2025 - 15:23:46</Generatedon>
+    <Generatedon>27/04/2025 - 17:10:13</Generatedon>
     <Parser>MultiReportParser (2x OpenCoverParser)</Parser>
     <Assemblies>2</Assemblies>
     <Classes>6</Classes>
@@ -9,7 +9,7 @@
     <Coveredlines>199</Coveredlines>
     <Uncoveredlines>444</Uncoveredlines>
     <Coverablelines>643</Coverablelines>
-    <Totallines>1254</Totallines>
+    <Totallines>1253</Totallines>
     <Linecoverage>30.9</Linecoverage>
     <Coveredbranches>0</Coveredbranches>
     <Totalbranches>0</Totalbranches>
@@ -18,9 +18,9 @@
     <Methodcoverage>38.7</Methodcoverage>
   </Summary>
   <Coverage>
-    <Assembly name="EnigmaClassesAssembly" classes="5" coverage="17.4" coveredlines="94" coverablelines="538" totallines="1008" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="12" totalmethods="42" methodcoverage="28.5">
+    <Assembly name="EnigmaClassesAssembly" classes="5" coverage="17.4" coveredlines="94" coverablelines="538" totallines="1007" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="12" totalmethods="42" methodcoverage="28.5">
       <Class name="CameraController" coverage="0" coveredlines="0" coverablelines="73" totallines="124" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="8" methodcoverage="0" />
-      <Class name="Controller" coverage="6.2" coveredlines="21" coverablelines="335" totallines="636" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="3" totalmethods="15" methodcoverage="20" />
+      <Class name="Controller" coverage="6.2" coveredlines="21" coverablelines="335" totallines="635" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="3" totalmethods="15" methodcoverage="20" />
       <Class name="EnigmaM3" coverage="68.5" coveredlines="48" coverablelines="70" totallines="124" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="4" totalmethods="6" methodcoverage="66.6" />
       <Class name="PlugboardSocket" coverage="0" coveredlines="0" coverablelines="21" totallines="40" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="5" methodcoverage="0" />
       <Class name="Rotor" coverage="64.1" coveredlines="25" coverablelines="39" totallines="84" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="5" totalmethods="8" methodcoverage="62.5" />
