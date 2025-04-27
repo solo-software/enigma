@@ -45,7 +45,6 @@ public class CameraController : MonoBehaviour
             downArrowText.text = "Keyboard";
             upArrow.SetActive(false);
             StartCoroutine(FadeInSettings());
-            rotorSettingsCanvasGroup.enabled = true;
         }
         // Plugboard to keyboard
         else if (cameraState == -1)
@@ -77,7 +76,6 @@ public class CameraController : MonoBehaviour
             downArrowText.text = "Plugboard";
             upArrow.SetActive(true);
             StartCoroutine(FadeOutSettings());
-            rotorSettingsCanvasGroup.enabled = false;
         }
     }
 

@@ -16,7 +16,6 @@ public class PlugboardSocket : MonoBehaviour
         {
             plugCharacter = gameObject.name[name.Length - 1];
         }
-        Debug.Log(plugCharacter.ToString() + " Clicked!");
         ENIGMA_CONTROLLER.PlugSocketSelected(plugCharacter, gameObject);
     }
 

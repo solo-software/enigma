@@ -457,6 +457,7 @@ public class Controller : MonoBehaviour
                 Destroy(GameObject.Find("Plug" + plugChar.ToString()));
                 mousePlug = Instantiate(PLUG_MODEL, rootPlugSocket.GetComponent<Transform>().position, Quaternion.Euler(new Vector3(-90, 0, 180)));
                 BreakPlugboardConnection();
+                leafPlugSocket = null;
             }
             // If the user is cancelling a connection, destroy the associated plugs
             else
@@ -465,6 +466,7 @@ public class Controller : MonoBehaviour
                 Destroy(mousePlug);
                 mousePlug = null;
                 rootPlugSocket = null;
+                leafPlugSocket = null;
             }
         }
     }
@@ -582,6 +584,9 @@ public class Controller : MonoBehaviour
             lRotorAlphabetRing = Instantiate(ALPHABET_TYRES[newRotorNumber], new Vector3(0, 0, 0.045f), Quaternion.Euler(90, 0, 180), lRotorObject.GetComponent<Transform>());
             newRotorObject = lRotorObject;
             newAlphabetRing = lRotorAlphabetRing;
+            lRotorNumber = (RotorNumber)newRotorNumber;
+            lRotorRingSetting = (Character)newRotorRingSetting;
+            lRotorPosition = newRotorPosition;
         }
         else if (rotorIndex == 1)
         {
@@ -591,6 +596,9 @@ public class Controller : MonoBehaviour
             mRotorAlphabetRing = Instantiate(ALPHABET_TYRES[newRotorNumber], new Vector3(0, 0, 0.025f), Quaternion.Euler(90, 0, 180), mRotorObject.GetComponent<Transform>());
             newRotorObject = mRotorObject;
             newAlphabetRing = mRotorAlphabetRing;
+            mRotorNumber = (RotorNumber)newRotorNumber;
+            mRotorRingSetting = (Character)newRotorRingSetting;
+            mRotorPosition = newRotorPosition;
         }
         else
         {
@@ -600,6 +608,9 @@ public class Controller : MonoBehaviour
             rRotorAlphabetRing = Instantiate(ALPHABET_TYRES[newRotorNumber], new Vector3(0, 0, 0.005f), Quaternion.Euler(90, 0, 180), rRotorObject.GetComponent<Transform>());
             newRotorObject = rRotorObject;
             newAlphabetRing = rRotorAlphabetRing;
+            rRotorNumber = (RotorNumber)newRotorNumber;
+            rRotorRingSetting = (Character)newRotorRingSetting;
+            rRotorPosition = newRotorPosition;
         }
         // Rotate the alphabet ring according to the chosen ringstellung
         newAlphabetRing.GetComponent<Transform>().Rotate(new Vector3(0, 180 - (360f / 26) * newRotorRingSetting, 0));
@@ -617,7 +628,7 @@ public class Controller : MonoBehaviour
     }
 
     // Custom modulo that works for negative numbers
-    private static int mod(int a, int b)
+    public static int mod(int a, int b)
     {
         return (a % b + b) % b;
     }

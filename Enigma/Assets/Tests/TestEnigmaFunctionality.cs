@@ -214,4 +214,33 @@ public class TestEnigmaFunctionality
             }
         }
     }
+
+    [Test]
+    public void TestPlugboard()
+    {
+        // Test that the machine encrypts swapped letters correctly
+        // Set up Enigma with rotors I, II, III in state AAA with NO plugboard
+        Rotor lTestRotor = new Rotor(ROTORS[0], TURNOVER_POSITIONS[0], null, null);
+        Rotor mTestRotor = new Rotor(ROTORS[1], TURNOVER_POSITIONS[1], null, null);
+        Rotor rTestRotor = new Rotor(ROTORS[2], TURNOVER_POSITIONS[2], null, null);
+        EnigmaM3 testEnigma = new EnigmaM3(lTestRotor, mTestRotor, rTestRotor, REFLECTORS[0], ENTRY_WHEELS[0], ENTRY_WHEELS[0]);
+        char[] plainText = { 'H', 'E', 'L', 'L', 'O' };
+        char[] cipherText = { 'I', 'L', 'B', 'D', 'A' }; // "HELLO" encrypted on these settings
+        for (int i = 0; i < 5; i++)
+        {
+            Assert.AreEqual(cipherText[i], testEnigma.Encrypt(plainText[i])); // Check that Enigma is encrypting as expected
+        }
+        // Set up new Enigma, this time with connection AB made on the plugboard
+        // Test plugboard with letters A and B swapped
+        int[] testPlugboard = new int[] { 1, 0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26 };
+        lTestRotor = new Rotor(ROTORS[0], TURNOVER_POSITIONS[0], null, null);
+        mTestRotor = new Rotor(ROTORS[1], TURNOVER_POSITIONS[1], null, null);
+        rTestRotor = new Rotor(ROTORS[2], TURNOVER_POSITIONS[2], null, null);
+        testEnigma = new EnigmaM3(lTestRotor, mTestRotor, rTestRotor, REFLECTORS[0], ENTRY_WHEELS[0], testPlugboard);
+        cipherText = new char[]{ 'I', 'L', 'A', 'D', 'B' }; // "HELLO" encrypted on these settings, A and B swapped because of plugboard
+        for (int i = 0; i < 5; i++)
+        {
+            Assert.AreEqual(cipherText[i], testEnigma.Encrypt(plainText[i])); // Check that Enigma is encrypting as expected
+        }
+    }
 }
