@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Children:
   - {fileID: 3}
-  - {fileID: 18}
+  - {fileID: 19}
   m_Position:
     serializedVersion: 2
     x: 0
@@ -138,7 +138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Children:
   - {fileID: 4}
-  - {fileID: 14}
+  - {fileID: 15}
   m_Position:
     serializedVersion: 2
     x: 0
@@ -239,9 +239,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: b2530100
-      m_LastClickedID: 86962
-      m_ExpandedIDs: 2277fcffae530100
+      m_SelectedIDs: 46620000
+      m_LastClickedID: 0
+      m_ExpandedIDs: 2afbffffe6600000f0610000006200002c6200003a620000e062000000630000306300005263000090630000de630000fc63000046650000ba650000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -295,8 +295,9 @@ MonoBehaviour:
   - {fileID: 11}
   - {fileID: 12}
   - {fileID: 13}
+  - {fileID: 14}
   m_Selected: 1
-  m_LastSelected: 2
+  m_LastSelected: 7
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -317,10 +318,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 381
-    y: 73
-    width: 1178
-    height: 558
+    x: 304.80002
+    y: 73.6
+    width: 942.00006
+    height: 394.2
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -332,12 +333,12 @@ MonoBehaviour:
     m_SaveData: []
     m_OverlaysVisible: 1
   m_Spl:
-    ID: 78970
+    ID: 143
     splitterInitialOffset: 0
     currentActiveSplitter: -1
     realSizes:
-    - 366
-    - 122
+    - 243.2
+    - 80.8
     relativeSizes:
     - 0.75
     - 0.25
@@ -347,7 +348,7 @@ MonoBehaviour:
     maxSizes:
     - 0
     - 0
-    lastTotalSize: 488
+    lastTotalSize: 324
     splitSize: 6
     xOffset: 0
     m_Version: 1
@@ -482,7 +483,7 @@ MonoBehaviour:
       name: Enigma
       fullName: Enigma
       resultStatus: 1
-      duration: 0.1278915
+      duration: 0.2419708
       messages: 
       output: 
       stacktrace: 
@@ -493,12 +494,12 @@ MonoBehaviour:
       categories: []
       parentId: 
       parentUniqueId: 
-    - id: 1007
-      uniqueId: '[Tests][C:/Users/Admin/Documents/GitRepos/3rd Year/enigma/Enigma/Library/ScriptAssemblies/Tests.dll][suite]'
+    - id: 1008
+      uniqueId: '[Tests][C:/Users/BOB-F/git/enigma/Enigma/Library/ScriptAssemblies/Tests.dll][suite]'
       name: Tests.dll
-      fullName: C:/Users/Admin/Documents/GitRepos/3rd Year/enigma/Enigma/Library/ScriptAssemblies/Tests.dll
+      fullName: C:/Users/BOB-F/git/enigma/Enigma/Library/ScriptAssemblies/Tests.dll
       resultStatus: 1
-      duration: 0.0391304
+      duration: 0.1088159
       messages: 
       output: 
       stacktrace: 
@@ -514,7 +515,7 @@ MonoBehaviour:
       name: TestEnigmaFunctionality
       fullName: TestEnigmaFunctionality
       resultStatus: 1
-      duration: 0.0363813
+      duration: 0.102978
       messages: 
       output: 
       stacktrace: 
@@ -530,7 +531,7 @@ MonoBehaviour:
       name: TestlRotorTurnover
       fullName: TestEnigmaFunctionality.TestlRotorTurnover
       resultStatus: 1
-      duration: 0.0158969
+      duration: 0.0402739
       messages: 
       output: 
       stacktrace: 
@@ -547,7 +548,24 @@ MonoBehaviour:
       name: TestmRotorTurnover
       fullName: TestEnigmaFunctionality.TestmRotorTurnover
       resultStatus: 1
-      duration: 0.0004768
+      duration: 0.0012355
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: Tests.dll/[Tests][TestEnigmaFunctionality][suite]
+    - id: 1007
+      uniqueId: Tests.dll/TestEnigmaFunctionality/[Tests][TestEnigmaFunctionality.TestPlugboard]
+      name: TestPlugboard
+      fullName: TestEnigmaFunctionality.TestPlugboard
+      resultStatus: 1
+      duration: 0.0013859
       messages: 
       output: 
       stacktrace: 
@@ -564,7 +582,7 @@ MonoBehaviour:
       name: TestRotorIsolatedBehaviour
       fullName: TestEnigmaFunctionality.TestRotorIsolatedBehaviour
       resultStatus: 1
-      duration: 0.0011016
+      duration: 0.0045385
       messages: 
       output: 
       stacktrace: 
@@ -581,7 +599,7 @@ MonoBehaviour:
       name: TestStandardSteppingBehaviour
       fullName: TestEnigmaFunctionality.TestStandardSteppingBehaviour
       resultStatus: 1
-      duration: 0.0002742
+      duration: 0.0009681
       messages: 
       output: 
       stacktrace: 
@@ -598,7 +616,7 @@ MonoBehaviour:
       name: TestZToA
       fullName: TestEnigmaFunctionality.TestZToA
       resultStatus: 1
-      duration: 0.0002928
+      duration: 0.0010918
       messages: 
       output: 
       stacktrace: 
@@ -610,12 +628,12 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1001
       parentUniqueId: Tests.dll/[Tests][TestEnigmaFunctionality][suite]
-    m_ResultText: Enigma (0.128s)
+    m_ResultText: TestPlugboard (0.001s)
     m_ResultStacktrace: 
     m_TestListState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 4f796f5d
-      m_LastClickedID: 1567586639
+      m_SelectedIDs: ac1cde73
+      m_LastClickedID: 1943936172
       m_ExpandedIDs: c13873f5fbbe55194f796f5dffffff7f
       m_RenameOverlay:
         m_UserAcceptedRename: 0
@@ -990,17 +1008,17 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_WindowGUID: c3774ce68a7164e4fad244221ef128b2
   m_Gizmos: 0
-  m_OverrideSceneCullingMask: 0
-  m_SceneIsLit: 0
+  m_OverrideSceneCullingMask: 6917529027641081856
+  m_SceneIsLit: 1
   m_SceneLighting: 1
   m_2DMode: 0
   m_isRotationLocked: 0
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0.07951102, y: 0.10063653, z: -0.14688891}
+    m_Target: {x: 797.2477, y: 888.75165, z: -0.84803927}
     speed: 2
-    m_Value: {x: 0.07951102, y: 0.10063653, z: -0.14688891}
+    m_Value: {x: 797.2477, y: 888.75165, z: -0.84803927}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1011,7 +1029,7 @@ MonoBehaviour:
   m_SceneViewState:
     m_AlwaysRefresh: 0
     showFog: 1
-    showSkybox: 0
+    showSkybox: 1
     showFlares: 1
     showImageEffects: 1
     showParticleSystems: 1
@@ -1046,13 +1064,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.29230773, y: -0.10584507, z: 0.032638796, w: 0.94999135}
+    m_Target: {x: -0.27295417, y: -0.2720018, z: 0.08102274, w: -0.91961366}
     speed: 2
-    m_Value: {x: 0.29227912, y: -0.105834715, z: 0.032635603, w: 0.94989836}
+    m_Value: {x: -0.27285284, y: -0.27190083, z: 0.08099266, w: -0.9192723}
   m_Size:
-    m_Target: 0.009955146
+    m_Target: 72.138756
     speed: 2
-    m_Value: 0.009955146
+    m_Value: 72.138756
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -2735,6 +2753,40 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5115ff20f1ea204dac14fa49c0e8f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MinSize: {x: 445, y: 65}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_TitleContent:
+    m_Text: Code Coverage
+    m_Image: {fileID: 2800000, guid: 48e45b7f100ee4b48a02e05135e6cece, type: 3}
+    m_Tooltip: 
+  m_Pos:
+    serializedVersion: 2
+    x: 304.80002
+    y: 73.6
+    width: 942.00006
+    height: 394.2
+  m_SerializedDataModeController:
+    m_DataMode: 0
+    m_PreferredDataMode: 0
+    m_SupportedDataModes: 
+    isAutomatic: 1
+  m_ViewDataDictionary: {fileID: 0}
+  m_OverlayCanvas:
+    m_LastAppliedPresetName: Default
+    m_SaveData: []
+    m_OverlaysVisible: 1
+--- !u!114 &15
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: ConsoleWindow
@@ -2748,14 +2800,14 @@ MonoBehaviour:
     height: 355.59998
   m_MinSize: {x: 101, y: 121}
   m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 17}
+  m_ActualView: {fileID: 18}
   m_Panes:
-  - {fileID: 15}
   - {fileID: 16}
   - {fileID: 17}
+  - {fileID: 18}
   m_Selected: 2
   m_LastSelected: 0
---- !u!114 &15
+--- !u!114 &16
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2800,7 +2852,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Models
+    - Assets/Scripts
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -2808,16 +2860,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Models
+  - Assets/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\BOB-F\git\enigma\Enigma
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: e25e0000
-    m_LastClickedID: 24290
-    m_ExpandedIDs: 00000000e25e0000e45e000000ca9a3bffffff7f
+    m_SelectedIDs: 30660000
+    m_LastClickedID: 26160
+    m_ExpandedIDs: 00000000b0600000b260000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -2845,7 +2897,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000e25e0000e45e000000ca9a3bffffff7f
+    m_ExpandedIDs: 00000000b0600000b260000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -2870,9 +2922,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: b2530100
-    m_LastClickedInstanceID: 86962
-    m_HadKeyboardFocusLastEvent: 0
+    m_SelectedInstanceIDs: 500d0000
+    m_LastClickedInstanceID: 3408
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000625800005c5800001456000036590000b85a000000000000585a0000305c0000bc5c0000e81c0000c05a0000b4560000aa740000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -2889,7 +2941,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 14}
+      m_ClientGUIView: {fileID: 0}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
@@ -2901,7 +2953,7 @@ MonoBehaviour:
     m_GridSize: 64
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 115
---- !u!114 &16
+--- !u!114 &17
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2937,8 +2989,8 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 86962
---- !u!114 &17
+  m_LastSelectedObjectID: 25158
+--- !u!114 &18
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2972,7 +3024,7 @@ MonoBehaviour:
     m_LastAppliedPresetName: Default
     m_SaveData: []
     m_OverlaysVisible: 1
---- !u!114 &18
+--- !u!114 &19
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2993,12 +3045,12 @@ MonoBehaviour:
     height: 770.8
   m_MinSize: {x: 276, y: 71}
   m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 19}
+  m_ActualView: {fileID: 20}
   m_Panes:
-  - {fileID: 19}
+  - {fileID: 20}
   m_Selected: 0
   m_LastSelected: 0
---- !u!114 &19
+--- !u!114 &20
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}

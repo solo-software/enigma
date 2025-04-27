@@ -55,7 +55,7 @@ public class Rotor
         }
 
         // Return whether this step will cause a turnover of adjacent rotors
-        return turn_positions.Contains(Controller.mod((position - ring_offset), 26));
+        return turn_positions.Contains(GetApparentPosition());
     }
 
     // Get the functional position of the rotor (for encryption)

@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <CoverageReport scope="Summary">
   <Summary>
-    <Generatedon>27/04/2025 - 17:10:13</Generatedon>
+    <Generatedon>27/04/2025 - 21:09:36</Generatedon>
     <Parser>MultiReportParser (2x OpenCoverParser)</Parser>
     <Assemblies>2</Assemblies>
     <Classes>6</Classes>
     <Files>6</Files>
     <Coveredlines>199</Coveredlines>
-    <Uncoveredlines>444</Uncoveredlines>
-    <Coverablelines>643</Coverablelines>
-    <Totallines>1253</Totallines>
+    <Uncoveredlines>445</Uncoveredlines>
+    <Coverablelines>644</Coverablelines>
+    <Totallines>1255</Totallines>
     <Linecoverage>30.9</Linecoverage>
     <Coveredbranches>0</Coveredbranches>
     <Totalbranches>0</Totalbranches>
-    <Coveredmethods>19</Coveredmethods>
+    <Coveredmethods>18</Coveredmethods>
     <Totalmethods>49</Totalmethods>
-    <Methodcoverage>38.7</Methodcoverage>
+    <Methodcoverage>36.7</Methodcoverage>
   </Summary>
   <Coverage>
-    <Assembly name="EnigmaClassesAssembly" classes="5" coverage="17.4" coveredlines="94" coverablelines="538" totallines="1007" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="12" totalmethods="42" methodcoverage="28.5">
+    <Assembly name="EnigmaClassesAssembly" classes="5" coverage="17.4" coveredlines="94" coverablelines="539" totallines="1009" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="11" totalmethods="42" methodcoverage="26.1">
       <Class name="CameraController" coverage="0" coveredlines="0" coverablelines="73" totallines="124" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="8" methodcoverage="0" />
-      <Class name="Controller" coverage="6.2" coveredlines="21" coverablelines="335" totallines="635" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="3" totalmethods="15" methodcoverage="20" />
-      <Class name="EnigmaM3" coverage="68.5" coveredlines="48" coverablelines="70" totallines="124" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="4" totalmethods="6" methodcoverage="66.6" />
+      <Class name="Controller" coverage="6.2" coveredlines="21" coverablelines="336" totallines="637" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="3" totalmethods="15" methodcoverage="20" />
+      <Class name="EnigmaM3" coverage="67.1" coveredlines="47" coverablelines="70" totallines="124" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="3" totalmethods="6" methodcoverage="50" />
       <Class name="PlugboardSocket" coverage="0" coveredlines="0" coverablelines="21" totallines="40" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="5" methodcoverage="0" />
-      <Class name="Rotor" coverage="64.1" coveredlines="25" coverablelines="39" totallines="84" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="5" totalmethods="8" methodcoverage="62.5" />
+      <Class name="Rotor" coverage="66.6" coveredlines="26" coverablelines="39" totallines="84" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="5" totalmethods="8" methodcoverage="62.5" />
     </Assembly>
     <Assembly name="Tests" classes="1" coverage="100" coveredlines="105" coverablelines="105" totallines="246" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="7" totalmethods="7" methodcoverage="100">
       <Class name="TestEnigmaFunctionality" coverage="100" coveredlines="105" coverablelines="105" totallines="246" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="7" totalmethods="7" methodcoverage="100" />

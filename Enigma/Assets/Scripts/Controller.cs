@@ -376,9 +376,11 @@ public class Controller : MonoBehaviour
                 keyAudio.Play();
 
                 // Get the new rotor positions
-                int lPosition = enigma.GetRotorPosition(0);
-                int mPosition = enigma.GetRotorPosition(1);
-                int rPosition = enigma.GetRotorPosition(2);
+                int lPosition = enigma.GetApparentRotorPosition(0);
+                int mPosition = enigma.GetApparentRotorPosition(1);
+                int rPosition = enigma.GetApparentRotorPosition(2);
+
+                Debug.Log(enigma.GetRotorPosition(0).ToString() + " " + enigma.GetRotorPosition(1).ToString() + " " + enigma.GetRotorPosition(2).ToString());
 
                 // Change the rotor settings dropdown menus according to the new positions
                 enableRotorChanges = false;
